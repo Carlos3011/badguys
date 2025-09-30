@@ -21,5 +21,6 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         $this->app->concord->registerModel(\Konekt\User\Contracts\User::class, \App\Models\User::class);
+
     }
 }

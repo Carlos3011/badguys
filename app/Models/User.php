@@ -8,9 +8,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Konekt\User\Contracts\Profile;
 use Konekt\User\Contracts\User as UserContract;
+use Konekt\Acl\Traits\HasRoles;
 
 class User extends Authenticatable implements UserContract
 {
+    use HasRoles;
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
@@ -48,7 +50,7 @@ class User extends Authenticatable implements UserContract
         ];
     }
 
-     public function inactivate()
+    public function inactivate()
     {
         $this->is_active = false;
         $this->save();

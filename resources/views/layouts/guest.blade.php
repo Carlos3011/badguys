@@ -20,6 +20,11 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite(['vendor/konekt/appshell/src/resources/assets/js/appshell.standalone.esm.js'])
+
+        <style>
+            [x-cloak] { display: none !important; }
+        </style>
        
     </head>
     <body class="font-montserrat text-gray-900 antialiased">
