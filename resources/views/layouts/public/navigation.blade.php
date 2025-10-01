@@ -19,10 +19,8 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('home') }}" class="flex items-center space-x-3">
-                        <div class="w-10 h-10 bg-gray-800 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-gray-600">
-                            <i class="fas fa-crown text-lg text-white"></i>
-                        </div>
-                        <h3 class="text-2xl font-wet-paint text-white tracking-wider">
+                       
+                        <h3 class="text-2xl font-roboto-flex font-bold text-white tracking-wider">
                             BADGUYS
                         </h3>
                     </a>

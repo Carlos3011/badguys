@@ -1,7 +1,7 @@
 <x-guest-layout>
     <!-- Page Title -->
     <div class="text-center mb-8">
-        <h2 class="text-3xl font-wet-paint text-gray-900 mb-2">
+        <h2 class="text-3xl font-roboto-flex font-bold text-gray-900 mb-2">
             RESTABLECER <span class="text-black">CONTRASEÑA</span>
         </h2>
         <p class="text-gray-600 font-montserrat text-sm">Crea una nueva contraseña segura</p>

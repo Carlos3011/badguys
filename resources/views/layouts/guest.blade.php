@@ -46,7 +46,7 @@
                         
                         <!-- Brand Name -->
                         <div class="text-center mt-4">
-                            <h1 class="text-3xl font-wet-paint text-black tracking-wider">
+                            <h1 class="text-3xl font-roboto-flex font-bold text-black tracking-wider">
                                 BAD<span class="text-gray-600">GUYS</span>
                             </h1>
                             <div class="h-1 w-20 bg-black mx-auto mt-2 rounded-full"></div>
