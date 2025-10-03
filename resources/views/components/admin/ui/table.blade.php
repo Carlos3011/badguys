@@ -4,6 +4,7 @@
     'striped' => true,
     'bordered' => true,
     'hover' => true,
+    'headers' => null,
     'empty' => __('No hay registros disponibles'),
 ])
 
@@ -27,7 +28,15 @@
     <div class="overflow-x-auto">
         <table class="min-w-full text-sm">
             <thead class="bg-black text-white">
-                {{ $columns ?? '' }}
+                @if(is_array($headers) && count($headers))
+                    <tr>
+                        @foreach($headers as $header)
+                            <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">{{ $header }}</th>
+                        @endforeach
+                    </tr>
+                @else
+                    {{ $columns ?? '' }}
+                @endif
             </thead>
             @php
                 $tbodyClasses = 'bg-white';
@@ -39,8 +48,11 @@
                 }
             @endphp
             <tbody class="{{ $tbodyClasses }}">
+                @php($defaultSlot = trim($slot))
                 @if(isset($rows))
                     {{ $rows }}
+                @elseif(!empty($defaultSlot))
+                    {{ $slot }}
                 @else
                     <tr>
                         <td class="px-6 py-8 text-center text-gray-500 font-montserrat" colspan="100">{{ $empty }}</td>

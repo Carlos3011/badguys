@@ -1,9 +1,7 @@
 @props([
     'label' => null,
     'name' => null,
-    'type' => 'text',
     'value' => null,
-    'placeholder' => null,
     'help' => null,
     'required' => false,
 ])
@@ -18,14 +16,7 @@
         </label>
     @endif
 
-    <input
-        type="{{ $type }}"
-        name="{{ $name }}"
-        id="{{ $name }}"
-        value="{{ old($name, $value) }}"
-        placeholder="{{ $placeholder }}"
-        {{ $attributes->merge(['class' => 'block w-full rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black font-montserrat']) }}
-    />
+    <input type="date" name="{{ $name }}" id="{{ $name }}" value="{{ old($name, $value) }}" {{ $attributes->merge(['class' => 'block w-full rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black font-montserrat']) }} />
 
     @if($help)
         <p class="mt-1 text-xs text-gray-500">{{ $help }}</p>

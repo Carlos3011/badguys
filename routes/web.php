@@ -38,6 +38,10 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', function () {
         return view('admin.dashboard.index');
     })->name('admin.dashboard');
+
+    Route::get('/admin/products', function () {
+        return view('admin.products.index');
+    })->name('admin.products.index');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
