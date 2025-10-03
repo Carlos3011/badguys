@@ -8,7 +8,7 @@
         
         <div class="container mx-auto px-6 relative z-10">
             <div class="text-center max-w-4xl mx-auto">
-                <h1 class="text-6xl lg:text-7xl font-wet-paint text-black mb-8 tracking-wide">
+                <h1 class="text-6xl lg:text-7xl font-roboto-flex font-bold text-black mb-8 tracking-wide">
                     NUESTRA <span class="text-gray-700">HISTORIA</span>
                 </h1>
                 <div class="h-2 w-40 bg-black mx-auto mb-10 rounded-full"></div>
@@ -25,13 +25,11 @@
     <!-- Company Story Section -->
     <section class="bg-gray-50 py-20 relative overflow-hidden">
         <!-- Background texture -->
-        <div class="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-        
         <div class="container mx-auto px-6 relative z-10">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <!-- Story Content -->
                 <div>
-                    <h2 class="text-4xl lg:text-5xl font-wet-paint text-gray-900 mb-8">
+                    <h2 class="text-4xl lg:text-5xl font-roboto-flex font-bold  text-gray-900 mb-8">
                         DESDE LAS <span class="text-black">CALLES</span>
                     </h2>
                     <div class="space-y-6 text-gray-700 font-montserrat leading-relaxed">
@@ -54,15 +52,15 @@
                             <div class="w-32 h-32 bg-black rounded-full flex items-center justify-center mx-auto mb-8">
                                 <i class="fas fa-crown text-5xl text-white"></i>
                             </div>
-                            <h3 class="text-3xl font-wet-paint text-black mb-4">DESDE 2018</h3>
+                            <h3 class="text-3xl font-roboto-flex font-bold text-black mb-4">DESDE 2018</h3>
                             <p class="text-gray-600 font-montserrat text-lg">Creando tendencias urbanas</p>
                             <div class="mt-8 grid grid-cols-2 gap-6 text-center">
                                 <div>
-                                    <div class="text-2xl font-wet-paint text-black">50K+</div>
+                                    <div class="text-2xl font-roboto-flex font-bold  text-black">50K+</div>
                                     <div class="text-sm text-gray-500 font-montserrat">Clientes Satisfechos</div>
                                 </div>
                                 <div>
-                                    <div class="text-2xl font-wet-paint text-black">200+</div>
+                                    <div class="text-2xl font-roboto-flex font-bold  text-black">200+</div>
                                     <div class="text-sm text-gray-500 font-montserrat">Diseños Únicos</div>
                                 </div>
                             </div>
@@ -76,11 +74,9 @@
     <!-- Values Section -->
     <section class="bg-white py-20 relative overflow-hidden">
         <!-- Background texture -->
-        <div class="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-        
         <div class="container mx-auto px-6 relative z-10">
             <div class="text-center mb-16">
-                <h2 class="text-4xl lg:text-5xl font-wet-paint text-gray-900 mb-6">
+                <h2 class="text-4xl lg:text-5xl font-roboto-flex font-bold text-gray-900 mb-6">
                     NUESTROS <span class="text-black">VALORES</span>
                 </h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto font-montserrat">
@@ -94,7 +90,7 @@
                     <div class="w-20 h-20 bg-black rounded-full flex items-center justify-center mx-auto mb-6">
                         <i class="fas fa-heart text-2xl text-white"></i>
                     </div>
-                    <h3 class="text-2xl font-wet-paint text-black mb-4 text-center">AUTENTICIDAD</h3>
+                    <h3 class="text-2xl font-roboto-flex font-bold text-black mb-4 text-center">AUTENTICIDAD</h3>
                     <p class="text-gray-600 font-montserrat text-center leading-relaxed">
                         Creemos en ser genuinos. Cada pieza refleja nuestra verdadera pasión por el streetwear y la cultura urbana.
                     </p>
@@ -105,7 +101,7 @@
                     <div class="w-20 h-20 bg-black rounded-full flex items-center justify-center mx-auto mb-6">
                         <i class="fas fa-gem text-2xl text-white"></i>
                     </div>
-                    <h3 class="text-2xl font-wet-paint text-black mb-4 text-center">CALIDAD</h3>
+                    <h3 class="text-2xl font-roboto-flex font-bold text-black mb-4 text-center">CALIDAD</h3>
                     <p class="text-gray-600 font-montserrat text-center leading-relaxed">
                         No comprometemos la calidad. Utilizamos los mejores materiales para crear piezas duraderas y cómodas.
                     </p>
@@ -116,7 +112,7 @@
                     <div class="w-20 h-20 bg-black rounded-full flex items-center justify-center mx-auto mb-6">
                         <i class="fas fa-lightbulb text-2xl text-white"></i>
                     </div>
-                    <h3 class="text-2xl font-wet-paint text-black mb-4 text-center">INNOVACIÓN</h3>
+                    <h3 class="text-2xl font-roboto-flex font-bold text-black mb-4 text-center">INNOVACIÓN</h3>
                     <p class="text-gray-600 font-montserrat text-center leading-relaxed">
                         Siempre buscamos nuevas formas de expresión. Experimentamos con diseños, cortes y conceptos únicos.
                     </p>
@@ -127,7 +123,7 @@
                     <div class="w-20 h-20 bg-black rounded-full flex items-center justify-center mx-auto mb-6">
                         <i class="fas fa-users text-2xl text-white"></i>
                     </div>
-                    <h3 class="text-2xl font-wet-paint text-black mb-4 text-center">COMUNIDAD</h3>
+                    <h3 class="text-2xl font-roboto-flex font-bold text-black mb-4 text-center">COMUNIDAD</h3>
                     <p class="text-gray-600 font-montserrat text-center leading-relaxed">
                         Valoramos a nuestra comunidad. Cada cliente es parte de la familia BadGuys y su opinión nos importa.
                     </p>
@@ -138,7 +134,7 @@
                     <div class="w-20 h-20 bg-black rounded-full flex items-center justify-center mx-auto mb-6">
                         <i class="fas fa-leaf text-2xl text-white"></i>
                     </div>
-                    <h3 class="text-2xl font-wet-paint text-black mb-4 text-center">SOSTENIBILIDAD</h3>
+                    <h3 class="text-2xl font-roboto-flex font-bold text-black mb-4 text-center">SOSTENIBILIDAD</h3>
                     <p class="text-gray-600 font-montserrat text-center leading-relaxed">
                         Nos comprometemos con el planeta. Buscamos prácticas sostenibles en toda nuestra cadena de producción.
                     </p>
@@ -149,7 +145,7 @@
                     <div class="w-20 h-20 bg-black rounded-full flex items-center justify-center mx-auto mb-6">
                         <i class="fas fa-palette text-2xl text-white"></i>
                     </div>
-                    <h3 class="text-2xl font-wet-paint text-black mb-4 text-center">CREATIVIDAD</h3>
+                    <h3 class="text-2xl font-roboto-flex font-bold text-black mb-4 text-center">CREATIVIDAD</h3>
                     <p class="text-gray-600 font-montserrat text-center leading-relaxed">
                         La creatividad es nuestro motor. Cada diseño nace de la inspiración y la pasión por lo diferente.
                     </p>
@@ -161,11 +157,9 @@
     <!-- Call to Action -->
     <section class="bg-gray-50 py-20 relative overflow-hidden">
         <!-- Background texture -->
-        <div class="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-        
         <div class="container mx-auto px-6 relative z-10">
             <div class="text-center max-w-4xl mx-auto">
-                <h2 class="text-4xl lg:text-5xl font-wet-paint text-gray-900 mb-8">
+                <h2 class="text-4xl lg:text-5xl font-roboto-flex font-bold text-gray-900 mb-8">
                     ¿LISTO PARA SER PARTE DE <span class="text-black">BADGUYS?</span>
                 </h2>
                 <p class="text-xl text-gray-700 mb-10 font-montserrat leading-relaxed">

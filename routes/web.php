@@ -3,32 +3,39 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-// Ruta principal que carga la página home con layout público
-Route::get('/', function () {
-    return view('public.home');
-})->name('home');
-
-// Rutas públicas adicionales para el e-commerce
-Route::get('/productos', function () {
-    return view('public.products');
-})->name('productos');
-
-Route::get('/categorias', function () {
-    return view('public.categorys');
-})->name('categorias');
-
-Route::get('/contacto', function () {
-    return view('public.contact');
-})->name('contacto');
-
-Route::get('/nosotros', function () {
-    return view('public.about-us');
-})->name('nosotros');
+// Grupo de rutas públicas sin middleware
+Route::group([], function () {
+    // Ruta principal que carga la página home con layout público
+    Route::get('/', function () { return view('public.home'); })->name('home');
+    // Rutas públicas adicionales para el e-commerce
+    Route::get('/productos', function () { return view('public.products'); })->name('productos');
+    Route::get('/categorias', function () { return view('public.categorys'); })->name('categorias');
+    Route::get('/contacto', function () { return view('public.contact'); })->name('contacto');
+    Route::get('/nosotros', function () { return view('public.about-us'); })->name('nosotros');
+});
 
 // Dashboard para usuarios autenticados
+// Redirigir al dashboard adecuado según rol
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $user = auth()->user();
+    if ($user && method_exists($user, 'hasRole') && $user->hasRole('admin')) {
+        return redirect()->route('admin.dashboard');
+    }
+    return redirect()->route('customer.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+// Dashboards específicos
+Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
+    Route::get('/admin/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('admin.dashboard');
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/customer/dashboard', function () {
+        return view('customer.dashboard');
+    })->name('customer.dashboard');
+});
 
 // Rutas de perfil para usuarios autenticados
 Route::middleware('auth')->group(function () {

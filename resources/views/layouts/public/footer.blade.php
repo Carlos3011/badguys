@@ -18,7 +18,7 @@
             <div class="lg:col-span-2 space-y-10">
                 <div class="space-y-6">
                     <div class="flex items-center space-x-4">
-                        <h3 class="text-5xl font-wet-paint text-white tracking-wider">
+                        <h3 class="text-5xl font-roboto-flex font-bold text-white tracking-wider">
                             BADGUYS
                         </h3>
                         <div class="w-12 h-12 bg-gray-800 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-gray-600">
@@ -37,7 +37,7 @@
                 
                 <!-- Simplified Social Media -->
                 <div class="space-y-6">
-                    <h4 class="text-2xl font-wet-paint text-white tracking-wide">SÍGUENOS</h4>
+                    <h4 class="text-2xl font-roboto-flex font-bold text-white tracking-wide">SÍGUENOS</h4>
                     <div class="flex space-x-4">
                         <a href="#" class="group relative w-16 h-16 bg-gray-800 rounded-2xl flex items-center justify-center hover:bg-gray-700 transition-all duration-500 hover:scale-110 hover:-translate-y-1 border border-gray-600 hover:border-gray-500 backdrop-blur-sm">
                             <i class="fab fa-twitter text-2xl text-white group-hover:text-gray-300 transition-colors duration-300"></i>
@@ -58,7 +58,7 @@
             <!-- Simplified Links Section -->
             <div class="space-y-8">
                 <div class="flex items-center space-x-3">
-                    <h4 class="text-2xl font-wet-paint text-white tracking-wide">ENLACES</h4>
+                    <h4 class="text-2xl font-roboto-flex font-bold text-white tracking-wide">ENLACES</h4>
                     <div class="w-8 h-8 bg-gray-800 rounded-xl flex items-center justify-center border border-gray-600">
                         <i class="fas fa-link text-sm text-white"></i>
                     </div>
@@ -90,7 +90,7 @@
             <!-- Simplified Customer Service -->
             <div class="space-y-8">
                 <div class="flex items-center space-x-3">
-                    <h4 class="text-2xl font-wet-paint text-white tracking-wide">SOPORTE</h4>
+                    <h4 class="text-2xl font-roboto-flex font-bold text-white tracking-wide">SOPORTE</h4>
                     <div class="w-8 h-8 bg-gray-800 rounded-xl flex items-center justify-center border border-gray-600">
                         <i class="fas fa-headset text-sm text-white"></i>
                     </div>
@@ -116,7 +116,7 @@
                     <i class="fas fa-copyright text-sm text-white"></i>
                 </div>
                 <p class="text-gray-400 font-montserrat text-lg">
-                    © 2024 <span class="text-white font-semibold">BadGuys</span>. Todos los derechos reservados.
+                    © 2025 <span class="text-white font-semibold">BadGuys</span>. Todos los derechos reservados.
                 </p>
             </div>
             

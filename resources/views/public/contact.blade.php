@@ -2,11 +2,10 @@
     <!-- Hero Section -->
     <section class="bg-white py-24 relative overflow-hidden">
         <!-- Simple background pattern -->
-        <div class="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
         
         <div class="container mx-auto px-6 relative z-10">
             <div class="text-center max-w-4xl mx-auto">
-                <h1 class="text-6xl lg:text-7xl font-wet-paint text-black mb-8 tracking-wide">
+                <h1 class="text-6xl lg:text-7xl font-roboto-flex font-bold text-black mb-8 tracking-wide">
                     CONTÁCTANOS
                 </h1>
                 <div class="h-2 w-40 bg-black mx-auto mb-10 rounded-full"></div>
@@ -23,14 +22,13 @@
     <!-- Contact Form & Info Section -->
     <section class="bg-gray-50 py-20 relative overflow-hidden">
         <!-- Background texture -->
-        <div class="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
         
         <div class="container mx-auto px-6 relative z-10">
             <div class="grid lg:grid-cols-2 gap-16">
                 <!-- Contact Form -->
                 <div class="bg-white rounded-3xl shadow-xl p-8 lg:p-12 border border-gray-200 relative overflow-hidden">
                     <div class="relative z-10">
-                        <h2 class="text-3xl lg:text-4xl font-wet-paint text-gray-900 mb-8">
+                        <h2 class="text-3xl lg:text-4xl font-roboto-flex font-bold  text-gray-900 mb-8">
                             ENVÍANOS UN <span class="text-black">MENSAJE</span>
                         </h2>
                         
@@ -96,37 +94,13 @@
                     <!-- Contact Details -->
                     <div class="bg-white rounded-3xl shadow-xl p-8 border border-gray-200 relative overflow-hidden">
                         <div class="relative z-10">
-                            <h3 class="text-2xl font-wet-paint text-gray-900 mb-6">
+                            <h3 class="text-2xl font-roboto-flex font-bold text-gray-900 mb-6">
                                 INFORMACIÓN DE <span class="text-black">CONTACTO</span>
                             </h3>
                             
                             <div class="space-y-6">
-                                <!-- Address -->
-                                <div class="flex items-start space-x-4">
-                                    <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center flex-shrink-0">
-                                        <i class="fas fa-map-marker-alt text-white text-lg"></i>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-semibold text-gray-900 font-montserrat mb-1">Dirección</h4>
-                                        <p class="text-gray-600 font-montserrat">
-                                            123 Street Fashion Ave<br>
-                                            Urban District, NY 10001<br>
-                                            Estados Unidos
-                                        </p>
-                                    </div>
-                                </div>
-                                
-                                <!-- Phone -->
-                                <div class="flex items-start space-x-4">
-                                    <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center flex-shrink-0">
-                                        <i class="fas fa-phone text-white text-lg"></i>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-semibold text-gray-900 font-montserrat mb-1">Teléfono</h4>
-                                        <p class="text-gray-600 font-montserrat">+1 (555) 123-BADGUYS</p>
-                                        <p class="text-gray-600 font-montserrat">+1 (555) 123-2234</p>
-                                    </div>
-                                </div>
+                               
+                
                                 
                                 <!-- Email -->
                                 <div class="flex items-start space-x-4">
@@ -141,7 +115,7 @@
                                 </div>
                                 
                                 <!-- Hours -->
-                                <div class="flex items-start space-x-4">
+                                {{-- <div class="flex items-start space-x-4">
                                     <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center flex-shrink-0">
                                         <i class="fas fa-clock text-white text-lg"></i>
                                     </div>
@@ -153,7 +127,7 @@
                                             Dom: Cerrado
                                         </p>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -167,7 +141,7 @@
     <section class="bg-gray-50 py-20 relative overflow-hidden">
         <div class="container mx-auto px-6 relative z-10">
             <div class="text-center mb-16">
-                <h2 class="text-4xl lg:text-5xl font-wet-paint text-black mb-6">
+                <h2 class="text-4xl lg:text-5xl font-roboto-flex font-bold text-black mb-6">
                     MÉTODOS DE <span class="text-gray-600">PAGO</span>
                 </h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto font-montserrat">

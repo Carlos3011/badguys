@@ -14,7 +14,7 @@
         
         <div class="container mx-auto px-6 relative z-10">
             <div class="text-center">
-                <h1 class="text-6xl lg:text-7xl font-wet-paint text-white mb-6 tracking-wide">
+                <h1 class="text-6xl lg:text-7xl font-roboto-flex font-bold text-white mb-6 tracking-wide">
                     CATÁLOGO <span class="text-gray-300">COMPLETO</span>
                 </h1>
                 <div class="h-2 w-40 bg-white mx-auto mb-8 rounded-full"></div>
@@ -69,8 +69,6 @@
     <!-- Products Grid Section -->
     <section class="bg-white py-16 relative overflow-hidden">
         <!-- Background texture -->
-        <div class="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-        
         <div class="container mx-auto px-6 relative z-10">
             <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                 

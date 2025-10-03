@@ -2,11 +2,9 @@
     <!-- Hero Section -->
     <section class="bg-white py-20 relative overflow-hidden">
         <!-- Background texture -->
-        <div class="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-        
         <div class="container mx-auto px-6 relative z-10">
             <div class="text-center">
-                <h1 class="text-6xl lg:text-7xl font-wet-paint text-black mb-6 tracking-wide">
+                <h1 class="text-6xl lg:text-7xl font-roboto-flex font-bold text-black mb-6 tracking-wide">
                     EXPLORA <span class="text-gray-600">CATEGORÍAS</span>
                 </h1>
                 <div class="h-2 w-40 bg-black mx-auto mb-8 rounded-full"></div>
@@ -20,12 +18,10 @@
     <!-- Categories Grid Section -->
     <section class="bg-gray-50 py-20 relative overflow-hidden">
         <!-- Background texture -->
-        <div class="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-        
         <div class="container mx-auto px-6 relative z-10">
             <!-- Section Header -->
             <div class="text-center mb-16">
-                <h2 class="text-4xl lg:text-5xl font-wet-paint text-gray-900 mb-4">
+                <h2 class="text-4xl lg:text-5xl font-roboto-flex font-bold text-gray-900 mb-4">
                     NUESTRAS <span class="text-black">COLECCIONES</span>
                 </h2>
                 <p class="text-lg text-gray-600 max-w-2xl mx-auto font-montserrat">
@@ -43,13 +39,13 @@
                             <div class="w-24 h-24 bg-black rounded-full flex items-center justify-center mx-auto mb-6">
                                 <i class="fas fa-tshirt text-3xl text-white"></i>
                             </div>
-                            <h3 class="text-2xl font-wet-paint text-black mb-2">STREETWEAR</h3>
+                            <h3 class="text-2xl font-roboto-flex font-bold text-black mb-2">STREETWEAR</h3>
                             <p class="text-gray-600 font-montserrat text-sm">Colección Urbana</p>
                         </div>
                     </div>
                     
                     <div class="p-8">
-                        <h3 class="text-xl font-wet-paint text-gray-900 mb-3">Streetwear Premium</h3>
+                        <h3 class="text-xl font-roboto-flex font-bold text-gray-900 mb-3">Streetwear Premium</h3>
                         <p class="text-gray-600 mb-6 font-montserrat leading-relaxed">
                             Hoodies, camisetas oversized, joggers y más. Diseños exclusivos que definen el estilo urbano contemporáneo.
                         </p>
@@ -70,13 +66,13 @@
                             <div class="w-24 h-24 bg-black rounded-full flex items-center justify-center mx-auto mb-6">
                                 <i class="fas fa-hat-cowboy text-3xl text-white"></i>
                             </div>
-                            <h3 class="text-2xl font-wet-paint text-black mb-2">ACCESORIOS</h3>
+                            <h3 class="text-2xl font-roboto-flex font-bold text-black mb-2">ACCESORIOS</h3>
                             <p class="text-gray-600 font-montserrat text-sm">Estilo Único</p>
                         </div>
                     </div>
                     
                     <div class="p-8">
-                        <h3 class="text-xl font-wet-paint text-gray-900 mb-3">Accesorios Premium</h3>
+                        <h3 class="text-xl font-roboto-flex font-bold text-gray-900 mb-3">Accesorios Premium</h3>
                         <p class="text-gray-600 mb-6 font-montserrat leading-relaxed">
                             Gorras, gafas, joyas y más. Complementos que elevan tu look y completan tu estilo personal.
                         </p>
@@ -97,13 +93,13 @@
                             <div class="w-24 h-24 bg-black rounded-full flex items-center justify-center mx-auto mb-6">
                                 <i class="fas fa-running text-3xl text-white"></i>
                             </div>
-                            <h3 class="text-2xl font-wet-paint text-black mb-2">CALZADO</h3>
+                            <h3 class="text-2xl font-roboto-flex font-bold text-black mb-2">CALZADO</h3>
                             <p class="text-gray-600 font-montserrat text-sm">Edición Limitada</p>
                         </div>
                     </div>
                     
                     <div class="p-8">
-                        <h3 class="text-xl font-wet-paint text-gray-900 mb-3">Calzado Exclusivo</h3>
+                        <h3 class="text-xl font-roboto-flex font-bold text-gray-900 mb-3">Calzado Exclusivo</h3>
                         <p class="text-gray-600 mb-6 font-montserrat leading-relaxed">
                             Sneakers, botas y más. Cada paso cuenta con nuestro calzado diseñado para destacar en la ciudad.
                         </p>
@@ -124,13 +120,13 @@
                             <div class="w-24 h-24 bg-black rounded-full flex items-center justify-center mx-auto mb-6">
                                 <i class="fas fa-crown text-3xl text-white"></i>
                             </div>
-                            <h3 class="text-2xl font-wet-paint text-black mb-2">LIMITADA</h3>
+                            <h3 class="text-2xl font-roboto-flex font-bold text-black mb-2">LIMITADA</h3>
                             <p class="text-gray-600 font-montserrat text-sm">Exclusiva</p>
                         </div>
                     </div>
                     
                     <div class="p-8">
-                        <h3 class="text-xl font-wet-paint text-gray-900 mb-3">Edición Limitada</h3>
+                        <h3 class="text-xl font-roboto-flex font-bold text-gray-900 mb-3">Edición Limitada</h3>
                         <p class="text-gray-600 mb-6 font-montserrat leading-relaxed">
                             Piezas únicas y exclusivas. Colecciones limitadas que no encontrarás en ningún otro lugar.
                         </p>
@@ -151,13 +147,13 @@
                             <div class="w-24 h-24 bg-black rounded-full flex items-center justify-center mx-auto mb-6">
                                 <i class="fas fa-fire text-3xl text-white"></i>
                             </div>
-                            <h3 class="text-2xl font-wet-paint text-black mb-2">NUEVOS</h3>
+                            <h3 class="text-2xl font-roboto-flex font-bold text-black mb-2">NUEVOS</h3>
                             <p class="text-gray-600 font-montserrat text-sm">Lanzamientos</p>
                         </div>
                     </div>
                     
                     <div class="p-8">
-                        <h3 class="text-xl font-wet-paint text-gray-900 mb-3">Nuevos Lanzamientos</h3>
+                        <h3 class="text-xl font-roboto-flex font-bold text-gray-900 mb-3">Nuevos Lanzamientos</h3>
                         <p class="text-gray-600 mb-6 font-montserrat leading-relaxed">
                             Las últimas tendencias y novedades. Sé el primero en lucir los diseños más frescos del mercado.
                         </p>
@@ -178,13 +174,13 @@
                             <div class="w-24 h-24 bg-black rounded-full flex items-center justify-center mx-auto mb-6">
                                 <i class="fas fa-tags text-3xl text-white"></i>
                             </div>
-                            <h3 class="text-2xl font-wet-paint text-black mb-2">OFERTAS</h3>
+                            <h3 class="text-2xl font-roboto-flex font-bold text-black mb-2">OFERTAS</h3>
                             <p class="text-gray-600 font-montserrat text-sm">Especiales</p>
                         </div>
                     </div>
                     
                     <div class="p-8">
-                        <h3 class="text-xl font-wet-paint text-gray-900 mb-3">Ofertas Especiales</h3>
+                        <h3 class="text-xl font-roboto-flex font-bold text-gray-900 mb-3">Ofertas Especiales</h3>
                         <p class="text-gray-600 mb-6 font-montserrat leading-relaxed">
                             Descuentos exclusivos y promociones especiales. Aprovecha estas oportunidades únicas.
                         </p>
@@ -206,7 +202,7 @@
     <section class="bg-gray-50 py-20 relative overflow-hidden">
         <div class="container mx-auto px-6 relative z-10">
             <div class="text-center">
-                <h2 class="text-4xl lg:text-5xl font-wet-paint text-black mb-6">
+                <h2 class="text-4xl lg:text-5xl font-roboto-flex font-bold text-black mb-6">
                     ¿NO ENCUENTRAS LO QUE <span class="text-gray-700">BUSCAS?</span>
                 </h2>
                 <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-8 font-montserrat">

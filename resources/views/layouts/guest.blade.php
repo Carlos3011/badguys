@@ -20,6 +20,11 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite(['vendor/konekt/appshell/src/resources/assets/js/appshell.standalone.esm.js'])
+
+        <style>
+            [x-cloak] { display: none !important; }
+        </style>
        
     </head>
     <body class="font-montserrat text-gray-900 antialiased">
@@ -41,7 +46,7 @@
                         
                         <!-- Brand Name -->
                         <div class="text-center mt-4">
-                            <h1 class="text-3xl font-wet-paint text-black tracking-wider">
+                            <h1 class="text-3xl font-roboto-flex font-bold text-black tracking-wider">
                                 BAD<span class="text-gray-600">GUYS</span>
                             </h1>
                             <div class="h-1 w-20 bg-black mx-auto mt-2 rounded-full"></div>

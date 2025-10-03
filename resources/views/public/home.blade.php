@@ -169,8 +169,6 @@
     <!-- Featured Products Section -->
     <section class="bg-white py-24 relative overflow-hidden">
         <!-- Background texture -->
-        <div class="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-        
         <div class="container mx-auto px-6 relative z-10">
             <div class="text-center mb-20">
                 <h2 class="text-5xl lg:text-6xl font-roboto-flex text-black mb-6 tracking-wide">

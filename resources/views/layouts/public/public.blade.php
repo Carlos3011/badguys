@@ -18,6 +18,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Fruktur:ital@0;1&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['vendor/konekt/appshell/src/resources/assets/js/appshell.standalone.esm.js'])
+
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
 </head>
 
 <body class="font-sans antialiased">
