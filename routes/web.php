@@ -5,13 +5,21 @@ use Illuminate\Support\Facades\Route;
 
 // Grupo de rutas públicas sin middleware
 Route::group([], function () {
-    // Ruta principal que carga la página home con layout público
-    Route::get('/', function () { return view('public.home'); })->name('home');
-    // Rutas públicas adicionales para el e-commerce
-    Route::get('/productos', function () { return view('public.products'); })->name('productos');
-    Route::get('/categorias', function () { return view('public.categorys'); })->name('categorias');
-    Route::get('/contacto', function () { return view('public.contact'); })->name('contacto');
-    Route::get('/nosotros', function () { return view('public.about-us'); })->name('nosotros');
+    Route::get('/', function () {
+        return view('public.home');
+    })->name('home');
+    Route::get('/productos', function () {
+        return view('public.products');
+    })->name('productos');
+    Route::get('/categorias', function () {
+        return view('public.categorys');
+    })->name('categorias');
+    Route::get('/contacto', function () {
+        return view('public.contact');
+    })->name('contacto');
+    Route::get('/nosotros', function () {
+        return view('public.about-us');
+    })->name('nosotros');
 });
 
 // Dashboard para usuarios autenticados
@@ -21,13 +29,14 @@ Route::get('/dashboard', function () {
     if ($user && method_exists($user, 'hasRole') && $user->hasRole('admin')) {
         return redirect()->route('admin.dashboard');
     }
+
     return redirect()->route('customer.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 // Dashboards específicos
 Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', function () {
-        return view('admin.dashboard');
+        return view('admin.dashboard.index');
     })->name('admin.dashboard');
 });
 
