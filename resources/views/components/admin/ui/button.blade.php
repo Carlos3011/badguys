@@ -24,7 +24,6 @@
     $sizeClass = $sizes[$size] ?? $sizes['md'];
     $variantClass = $variants[$type] ?? $variants['default'];
     $classes = trim("$base $sizeClass $variantClass");
-    $inner = trim($slot);
 @endphp
 
 @if($href)
@@ -32,13 +31,13 @@
         @if($icon)
             <span class="mr-2">{!! $icon !!}</span>
         @endif
-        {{ $inner }}
+        {!! $slot !!}
     </a>
 @else
     <button type="button" {{ $attributes->merge(['class' => $classes]) }}>
         @if($icon)
             <span class="mr-2">{!! $icon !!}</span>
         @endif
-        {{ $inner }}
+        {!! $slot !!}
     </button>
 @endif
