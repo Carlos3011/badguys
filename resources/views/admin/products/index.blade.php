@@ -34,6 +34,7 @@
 
     <div class="py-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+            <x-admin.ui.index-toolbar :title="__('Productos')" :createHref="'#'" createLabel="Nuevo producto" />
             <x-admin.ui.table :headers="['ID','Nombre','Categoría','Precio','Stock','Estado','Acciones']">
                 @foreach($products as $product)
                     <tr>

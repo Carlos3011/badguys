@@ -42,6 +42,28 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
     Route::get('/admin/products', function () {
         return view('admin.products.index');
     })->name('admin.products.index');
+    
+    // Índices de otras secciones de administración
+    Route::get('/admin/categories', function () {
+        return view('admin.categories.index');
+    })->name('admin.categories.index');
+
+    Route::get('/admin/customers', function () {
+        return view('admin.customers.index');
+    })->name('admin.customers.index');
+
+    Route::get('/admin/orders', function () {
+        return view('admin.orders.index');
+    })->name('admin.orders.index');
+
+    Route::get('/admin/payments', function () {
+        return view('admin.payments.index');
+    })->name('admin.payments.index');
+
+    Route::get('/admin/discounts', function () {
+        return view('admin.discounts.index');
+    })->name('admin.discounts.index');
+    
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
