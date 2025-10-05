@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\CategoryController;
+
 
 // Grupo de rutas públicas sin middleware
 Route::group([], function () {
@@ -43,11 +45,11 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
         return view('admin.products.index');
     })->name('admin.products.index');
     
-    // Índices de otras secciones de administración
-    Route::get('/admin/categories', function () {
-        return view('admin.categories.index');
-    })->name('admin.categories.index');
+    
 
+    Route::prefix('admin')->name('admin.')->group(function () {
+        Route::resource('categories', CategoryController::class);
+    });
     Route::get('/admin/customers', function () {
         return view('admin.customers.index');
     })->name('admin.customers.index');
