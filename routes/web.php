@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductController;
 
 
 // Grupo de rutas públicas sin middleware
@@ -49,6 +50,7 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
 
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('categories', CategoryController::class);
+        Route::resource('products', ProductController::class);
     });
     Route::get('/admin/customers', function () {
         return view('admin.customers.index');

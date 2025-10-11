@@ -4,152 +4,148 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use Vanilo\Product\Models\Product;
-use Vanilo\Taxonomy\Models\Taxon;
+use App\Models\Product;
+use Vanilo\Category\Models\Taxon;
+use Vanilo\Properties\Models\Property;
+use Vanilo\Properties\Models\PropertyValue;
 
 class ProductController extends Controller
 {
-    // Lista productos
+    // Mostrar lista de productos
     public function index()
     {
-        $products = Product::with('taxons')->paginate(20);
+        $products = Product::with('taxons', 'propertyValues')->paginate(10);
         return view('admin.products.index', compact('products'));
     }
 
-    // Formulario create
+    // Mostrar formulario para crear producto
     public function create()
     {
-        $categories = Taxon::where('taxonomy_id', 1)->pluck('name', 'id'); // Ej: categorías de productos
-        return view('admin.products.create', compact('categories'));
+        $categories = Taxon::where('taxonomy_id', 1)->get(); // categorías
+        $brands     = Taxon::where('taxonomy_id', 2)->get(); // marcas
+        $seasons    = Taxon::where('taxonomy_id', 3)->get(); // temporadas
+        $properties = Property::all();
+
+        return view('admin.products.create', compact('categories', 'brands', 'seasons', 'properties'));
     }
 
     // Guardar producto
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'name'             => 'required|string|max:255',
-            'sku'              => 'required|string|max:50|unique:products,sku',
-            'price'            => 'required|numeric|min:0',
-            'original_price'   => 'nullable|numeric|min:0',
-            'stock'            => 'required|numeric|min:0',
-            'excerpt'          => 'nullable|string|max:500',
-            'description'      => 'nullable|string',
-            'state'            => 'required|in:active,inactive',
-            'slug'             => 'nullable|string|max:255|unique:products,slug',
-            'meta_keywords'    => 'nullable|string|max:255',
-            'meta_description' => 'nullable|string|max:255',
-            'category_id'      => 'nullable|exists:taxons,id',
-            'color'            => 'nullable|string|max:50',
-            'size'             => 'nullable|string|max:50',
-            'images.*'         => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        $request->validate([
+            'name'       => 'required|string|max:255',
+            'sku'        => 'required|string|unique:products,sku',
+            'price'      => 'nullable|numeric',
+            'stock'      => 'nullable|numeric',
+            'state'      => 'nullable|string',
+            'category'   => 'nullable|exists:taxons,id',
+            'brand'      => 'nullable|exists:taxons,id',
+            'season'     => 'nullable|exists:taxons,id',
+            'properties' => 'nullable|array',
+            'images.*'   => 'nullable|file|mimetypes:image/*|max:4096',
         ]);
 
         // Crear producto
-        $product = Product::create(array_merge($validated, [
-            'slug' => $validated['slug'] ?? Str::slug($validated['name']),
-        ]));
+        $product = Product::create([
+            'name'  => $request->name,
+            'sku'   => $request->sku,
+            'price' => $request->price ?? 0,
+            'stock' => $request->stock ?? 0,
+            'state' => $request->state ?? 'draft',
+        ]);
 
-        // Asignar categoría
-        if (!empty($validated['category_id'])) {
-            $product->attachTaxons([$validated['category_id']]);
+        // Asociar taxons
+        $taxonIds = array_filter([$request->category, $request->brand, $request->season]);
+        if (!empty($taxonIds)) {
+            $product->taxons()->sync($taxonIds);
         }
 
         // Asignar propiedades
-        if (!empty($validated['color'])) {
-            $product->setProperty('color', $validated['color']);
-        }
-        if (!empty($validated['size'])) {
-            $product->setProperty('size', $validated['size']);
+        if ($request->filled('properties')) {
+            $product->assignPropertyValues($request->properties);
         }
 
-        // Subida de imágenes
+        // Subir imágenes múltiples
         if ($request->hasFile('images')) {
-            $images = [];
             foreach ($request->file('images') as $image) {
-                $filename = Str::slug($product->name) . '-' . time() . '.' . $image->getClientOriginalExtension();
-                $destination = public_path('products');
-                if (!is_dir($destination)) {
-                    mkdir($destination, 0755, true);
-                }
-                $image->move($destination, $filename);
-                $images[] = 'products/' . $filename;
+                $product->addMedia($image)->toMediaCollection('default');
             }
-            $product->images = $images;
-            $product->save();
         }
 
-        return redirect()->route('admin.products.index')->with('success', 'Producto creado correctamente.');
+        return redirect()->route('admin.products.index')
+            ->with('success', 'Producto creado correctamente.');
     }
 
-    // Formulario edit
+    // Mostrar formulario de edición
     public function edit(Product $product)
     {
-        $categories = Taxon::where('taxonomy_id', 1)->pluck('name', 'id');
-        return view('admin.products.edit', compact('product', 'categories'));
+        $categories = Taxon::where('taxonomy_id', 1)->get();
+        $brands     = Taxon::where('taxonomy_id', 2)->get();
+        $seasons    = Taxon::where('taxonomy_id', 3)->get();
+        $properties = Property::all();
+
+        return view('admin.products.edit', compact('product', 'categories', 'brands', 'seasons', 'properties'));
     }
 
     // Actualizar producto
     public function update(Request $request, Product $product)
     {
-        $validated = $request->validate([
-            'name'             => 'required|string|max:255',
-            'sku'              => 'required|string|max:50|unique:products,sku,' . $product->id,
-            'price'            => 'required|numeric|min:0',
-            'original_price'   => 'nullable|numeric|min:0',
-            'stock'            => 'required|numeric|min:0',
-            'excerpt'          => 'nullable|string|max:500',
-            'description'      => 'nullable|string',
-            'state'            => 'required|in:active,inactive',
-            'slug'             => 'nullable|string|max:255|unique:products,slug,' . $product->id,
-            'meta_keywords'    => 'nullable|string|max:255',
-            'meta_description' => 'nullable|string|max:255',
-            'category_id'      => 'nullable|exists:taxons,id',
-            'color'            => 'nullable|string|max:50',
-            'size'             => 'nullable|string|max:50',
-            'images.*'         => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        $request->validate([
+            'name'       => 'required|string|max:255',
+            'sku'        => 'required|string|unique:products,sku,' . $product->id,
+            'price'      => 'nullable|numeric',
+            'stock'      => 'nullable|numeric',
+            'state'      => 'nullable|string',
+            'category'   => 'nullable|exists:taxons,id',
+            'brand'      => 'nullable|exists:taxons,id',
+            'season'     => 'nullable|exists:taxons,id',
+            'properties' => 'nullable|array',
+            'images.*'   => 'nullable|image|max:4096',
         ]);
 
-        // Actualizar datos básicos
-        $product->update(array_merge($validated, [
-            'slug' => $validated['slug'] ?? Str::slug($validated['name']),
-        ]));
+        $product->update([
+            'name'  => $request->name,
+            'sku'   => $request->sku,
+            'price' => $request->price ?? 0,
+            'stock' => $request->stock ?? 0,
+            'state' => $request->state ?? $product->state,
+        ]);
 
-        // Actualizar categoría
-        if (!empty($validated['category_id'])) {
-            $product->syncTaxons([$validated['category_id']]);
+        // Sincronizar taxons
+        $taxonIds = array_filter([$request->category, $request->brand, $request->season]);
+        $product->taxons()->sync($taxonIds);
+
+        // Reemplazar propiedades
+        if ($request->filled('properties')) {
+            $product->replacePropertyValuesByScalar($request->properties);
         }
 
-        // Actualizar propiedades
-        if (!empty($validated['color'])) {
-            $product->setProperty('color', $validated['color']);
-        }
-        if (!empty($validated['size'])) {
-            $product->setProperty('size', $validated['size']);
-        }
-
-        // Subida de nuevas imágenes (mantener las anteriores)
+        // Subir nuevas imágenes si existen
         if ($request->hasFile('images')) {
-            $images = $product->images ?? [];
+            $product->clearMediaCollection('default');
             foreach ($request->file('images') as $image) {
-                $filename = Str::slug($product->name) . '-' . time() . '.' . $image->getClientOriginalExtension();
-                $destination = public_path('products');
-                if (!is_dir($destination)) {
-                    mkdir($destination, 0755, true);
-                }
-                $image->move($destination, $filename);
-                $images[] = 'products/' . $filename;
+                $product->addMedia($image)->toMediaCollection('default');
             }
-            $product->images = $images;
-            $product->save();
         }
 
-        return redirect()->route('admin.products.index')->with('success', 'Producto actualizado correctamente.');
+        return redirect()->route('admin.products.index')
+            ->with('success', 'Producto actualizado correctamente.');
     }
 
+    // Eliminar producto
     public function destroy(Product $product)
     {
         $product->delete();
-        return back()->with('success', 'Producto eliminado correctamente.');
+        return redirect()->route('admin.products.index')
+            ->with('success', 'Producto eliminado correctamente.');
+    }
+
+    // Mostrar detalles de un producto
+    public function show(Product $product)
+    {
+        $product->load('taxons', 'propertyValues');
+        $images = $product->getMedia('default');
+
+        return view('admin.products.show', compact('product', 'images'));
     }
 }

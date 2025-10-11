@@ -2,69 +2,77 @@
     <x-slot name="header">
         <h2 class="font-roboto-flex text-xl font-semibold text-gray-800">{{ __('Productos') }}</h2>
     </x-slot>
-
-    @php
-        $products = [
-            [
-                'id' => 1,
-                'name' => 'Camiseta BadGuys Negra',
-                'category' => ['name' => 'Ropa'],
-                'price' => 19.99,
-                'stock' => 120,
-                'is_active' => true,
-            ],
-            [
-                'id' => 2,
-                'name' => 'Sudadera BadGuys',
-                'category' => ['name' => 'Ropa'],
-                'price' => 34.50,
-                'stock' => 45,
-                'is_active' => false,
-            ],
-            [
-                'id' => 3,
-                'name' => 'Gorra BadGuys',
-                'category' => ['name' => 'Accesorios'],
-                'price' => 12.00,
-                'stock' => 200,
-                'is_active' => true,
-            ],
-        ];
-    @endphp
-
     <div class="py-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <x-admin.ui.index-toolbar :title="__('Productos')" :createHref="'#'" createLabel="Nuevo producto" />
-            <x-admin.ui.table :headers="['ID','Nombre','Categoría','Precio','Stock','Estado','Acciones']">
-                @foreach($products as $product)
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap font-montserrat text-gray-700">{{ $product['id'] }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap font-montserrat text-gray-700">{{ $product['name'] }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap font-montserrat text-gray-700">{{ $product['category']['name'] ?? '-' }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap font-montserrat text-gray-700">${{ number_format($product['price'], 2) }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap font-montserrat text-gray-700">{{ $product['stock'] }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <x-admin.ui.badge :type="($product['is_active'] ? 'success' : 'danger')">
-                                {{ $product['is_active'] ? 'Activo' : 'Inactivo' }}
-                            </x-admin.ui.badge>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right">
-                            <div class="inline-flex items-center gap-2">
-                                <x-admin.ui.button type="primary" href="#">{{ __('Editar') }}</x-admin.ui.button>
-                                <x-admin.ui.dropdown align="right">
-                                    <x-slot name="trigger">
-                                        <x-admin.ui.button type="default">{{ __('Más') }}</x-admin.ui.button>
-                                    </x-slot>
-                                    <x-slot name="content">
-                                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">{{ __('Ver') }}</a>
-                                        <a href="#" class="block px-4 py-2 text-sm text-red-700 hover:bg-red-50">{{ __('Eliminar') }}</a>
-                                    </x-slot>
-                                </x-admin.ui.dropdown>
-                            </div>
-                        </td>
-                    </tr>
-                @endforeach
-            </x-admin.ui.table>
+            <x-admin.ui.index-toolbar :title="__('Productos')" :createHref="route('admin.products.create')" createLabel="Nuevo producto" />
+            @if($products->count())
+                <x-admin.ui.table :headers="['ID','Nombre','Categoría','Precio','Estado','Acciones']">
+                    @foreach($products as $product)
+                        @php
+                            $category = optional($product->taxons->firstWhere('taxonomy_id', 1))->name ?? '-';
+                        @endphp
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap font-montserrat text-gray-700">{{ $product->id }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap font-montserrat text-gray-700">{{ $product->name }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap font-montserrat text-gray-700">{{ $category }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap font-montserrat text-gray-700">${{ number_format($product->price, 2) }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                @php
+                                    $stateLabels = [
+                                        'draft' => 'Pendiente',
+                                        'inactive' => 'Inactivo',
+                                        'active' => 'Activo',
+                                        'unavailable' => 'No disponible',
+                                        'retired' => 'Retirado',
+                                    ];
+                                    $state = $product->state->value();
+                                    $badgeType = 'default';
+                                    switch ($state) {
+                                        case 'active':
+                                            $badgeType = 'success';
+                                            break;
+                                        case 'draft':
+                                            $badgeType = 'warning';
+                                            break;
+                                        case 'inactive':
+                                        case 'retired':
+                                            $badgeType = 'danger';
+                                            break;
+                                        case 'unavailable':
+                                            $badgeType = 'default';
+                                            break;
+                                    }
+                                @endphp
+                                <x-admin.ui.badge :type="$badgeType">
+                                    {{ $stateLabels[$state] ?? ucfirst($product->state->label()) }}
+                                </x-admin.ui.badge>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right">
+                                <div class="inline-flex items-center gap-2">
+                                    <x-admin.ui.button type="default" :href="route('admin.products.show', $product)">{{ __('Ver') }}</x-admin.ui.button>
+                                    <x-admin.ui.button type="primary" :href="route('admin.products.edit', $product)">{{ __('Editar') }}</x-admin.ui.button>
+                                    <form method="POST" action="{{ route('admin.products.destroy', $product) }}" class="inline" onsubmit="return confirm('{{ __('¿Seguro que deseas eliminar este producto?') }}')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <x-danger-button>{{ __('Eliminar') }}</x-danger-button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                    <x-slot name="pagination">
+                        {{ $products->links() }}
+                    </x-slot>
+                </x-admin.ui.table>
+            @else
+                <x-admin.ui.empty-state
+                    icon="box"
+                    title="Sin productos"
+                    description="No hay productos para mostrar aún."
+                    :actionHref="route('admin.products.create')"
+                    actionLabel="Nuevo producto"
+                />
+            @endif
         </div>
     </div>
 </x-admin-layout>
