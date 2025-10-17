@@ -69,12 +69,20 @@
                     </div>
 
                     <div>
-                        <x-admin.forms.file-upload label="Imágenes" name="images[]" accept="image/*" :preview="true" multiple />
+                        <x-admin.forms.file-upload 
+                            label="Imágenes" 
+                            name="images" 
+                            accept="image/*" 
+                            :preview="true" 
+                            :multiple="true"
+                            :maxFiles="4"
+                        />
+                        @error('images')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
                         @error('images.*')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
-
-                        <div id="create-images-preview" class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-2"></div>
                     </div>
 
                     <div class="flex items-center gap-3">
@@ -85,24 +93,4 @@
             </div>
         </div>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const input = document.querySelector('input[name="images[]"]');
-            const preview = document.getElementById('create-images-preview');
-            if (input && preview) {
-                input.addEventListener('change', function(e) {
-                    preview.innerHTML = '';
-                    Array.from(e.target.files).forEach(file => {
-                        const url = URL.createObjectURL(file);
-                        const img = document.createElement('img');
-                        img.src = url;
-                        img.alt = 'preview';
-                        img.className = 'w-full h-32 object-cover rounded-lg border';
-                        preview.appendChild(img);
-                    });
-                });
-            }
-        });
-    </script>
 </x-admin-layout>

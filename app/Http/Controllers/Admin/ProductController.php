@@ -42,7 +42,8 @@ class ProductController extends Controller
             'brand'      => 'nullable|exists:taxons,id',
             'season'     => 'nullable|exists:taxons,id',
             'properties' => 'nullable|array',
-            'images.*'   => 'nullable|file|mimetypes:image/*|max:4096',
+            'images'     => 'required|array|min:1|max:4',
+            'images.*'   => 'required|file|mimetypes:image/jpeg,image/png,image/jpg,image/gif,image/webp|max:4096',
         ]);
 
         // Crear producto
@@ -70,6 +71,8 @@ class ProductController extends Controller
             foreach ($request->file('images') as $image) {
                 $product->addMedia($image)->toMediaCollection('default');
             }
+        } else {
+            return redirect()->back()->withErrors(['images' => 'Debe subir al menos una imagen del producto.']);
         }
 
         return redirect()->route('admin.products.index')
@@ -100,7 +103,8 @@ class ProductController extends Controller
             'brand'      => 'nullable|exists:taxons,id',
             'season'     => 'nullable|exists:taxons,id',
             'properties' => 'nullable|array',
-            'images.*'   => 'nullable|image|max:4096',
+            'images'     => 'nullable|array|max:4',
+            'images.*'   => 'required|file|mimetypes:image/jpeg,image/png,image/jpg,image/gif,image/webp|max:4096',
         ]);
 
         $product->update([
