@@ -20,17 +20,17 @@
                 </x-slot:icon>
                 {{ __('Panel') }}
             </x-admin.layout.admin-nav-link>
-            <x-admin.layout.admin-nav-link :href="route('admin.products.index')" :active="request()->routeIs('admin.products.index')">
-                <x-slot:icon>
-                    <x-admin.ui.icon name="box-open" class="w-5 h-5" />
-                </x-slot:icon>
-                {{ __('Productos') }}
-            </x-admin.layout.admin-nav-link>
             <x-admin.layout.admin-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">
                 <x-slot:icon>
                     <x-admin.ui.icon name="tags" class="w-5 h-5" />
                 </x-slot:icon>
                 {{ __('Categorías') }}
+            </x-admin.layout.admin-nav-link>
+            <x-admin.layout.admin-nav-link :href="route('admin.products.index')" :active="request()->routeIs('admin.products.index')">
+                <x-slot:icon>
+                    <x-admin.ui.icon name="box-open" class="w-5 h-5" />
+                </x-slot:icon>
+                {{ __('Productos') }}
             </x-admin.layout.admin-nav-link>
             <x-admin.layout.admin-nav-link :href="route('admin.customers.index')" :active="request()->routeIs('admin.customers.index')">
                 <x-slot:icon>
@@ -104,8 +104,8 @@
         </a>
         <div class="space-y-2">
             <x-admin.layout.admin-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">{{ __('Panel') }}</x-admin.layout.admin-nav-link>
-            <x-admin.layout.admin-nav-link :href="route('admin.products.index')" :active="request()->routeIs('admin.products.index')">{{ __('Productos') }}</x-admin.layout.admin-nav-link>
             <x-admin.layout.admin-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">{{ __('Categorías') }}</x-admin.layout.admin-nav-link>
+            <x-admin.layout.admin-nav-link :href="route('admin.products.index')" :active="request()->routeIs('admin.products.index')">{{ __('Productos') }}</x-admin.layout.admin-nav-link>
             <x-admin.layout.admin-nav-link :href="route('admin.customers.index')" :active="request()->routeIs('admin.customers.index')">{{ __('Clientes') }}</x-admin.layout.admin-nav-link>
             <x-admin.layout.admin-nav-link :href="route('admin.orders.index')" :active="request()->routeIs('admin.orders.index')">{{ __('Pedidos') }}</x-admin.layout.admin-nav-link>
             <x-admin.layout.admin-nav-link :href="route('admin.payments.index')" :active="request()->routeIs('admin.payments.index')">{{ __('Pagos') }}</x-admin.layout.admin-nav-link>
