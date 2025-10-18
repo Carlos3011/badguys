@@ -59,30 +59,16 @@
                     </div>
                 </div>
 
-                @php
-                    $images = $product->getMedia('default');
-                @endphp
-
-                @if($images->count())
+                @if($product->hasImages())
                     <div class="mt-8">
                         <h4 class="text-lg font-semibold text-gray-800 mb-3">{{ __('Imágenes') }}</h4>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            @foreach($images as $img)
-                                <div class="relative group">
-                                    <img 
-                                        src="{{ asset($img->getUrl()) }}" 
-                                        alt="{{ $product->name }}" 
-                                        class="w-full h-32 object-cover rounded-lg border-2 border-gray-200 hover:border-gray-300 transition-colors cursor-pointer"
-                                        onclick="window.open('{{ asset($img->getUrl()) }}', '_blank')">
-                                    <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white text-xs p-2 rounded-b-lg">
-                                        <p class="truncate">{{ $img->file_name }}</p>
-                                    </div>
-                                    <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                        <span class="bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded">
-                                            Click para ampliar
-                                        </span>
-                                    </div>
-                                </div>
+                            @foreach($product->getMedia('default') as $img)
+                                <x-admin.ui.product-image 
+                                    :media="$img" 
+                                    :clickable="true"
+                                    class="w-full h-32 object-cover rounded-lg border-2 border-gray-200"
+                                />
                             @endforeach
                         </div>
                     </div>
