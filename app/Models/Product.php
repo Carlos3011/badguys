@@ -34,4 +34,43 @@ class Product extends BaseProduct implements HasMedia
             'taxon_id'
         );
     }
+     public function getImageUrl($media = null)
+    {
+        if (!$media) {
+            $media = $this->getFirstMedia('default');
+        }
+        
+        return $media ? '/storage/' . $media->id . '/' . $media->file_name : null;
+    }
+
+    /**
+     * Obtener todas las URLs de imágenes del producto
+     */
+    public function getImageUrls()
+    {
+        return $this->getMedia('default')->map(function($media) {
+            return [
+                'id' => $media->id,
+                'url' => '/storage/' . $media->id . '/' . $media->file_name,
+                'name' => $media->file_name,
+                'size' => $media->size,
+            ];
+        });
+    }
+
+    /**
+     * Obtener la URL de la primera imagen
+     */
+    public function getFirstImageUrlAttribute()
+    {
+        return $this->getImageUrl();
+    }
+
+    /**
+     * Verificar si el producto tiene imágenes
+     */
+    public function hasImages()
+    {
+        return $this->getMedia('default')->count() > 0;
+    }
 }
