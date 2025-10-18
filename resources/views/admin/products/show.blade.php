@@ -14,16 +14,19 @@
                     @php
                         $state = $product->state->value();
                         $stateConfig = [
-                            'active' => ['type' => 'success', 'label' => 'Activo'],
-                            'draft' => ['type' => 'warning', 'label' => 'Pendiente'],
-                            'inactive' => ['type' => 'danger', 'label' => 'Inactivo'],
-                            'unavailable' => ['type' => 'warning', 'label' => 'No disponible'],
-                            'retired' => ['type' => 'secondary', 'label' => 'Retirado'],
+                            'active' => ['type' => 'success', 'icon' => 'fas fa-check-circle', 'label' => 'Activo'],
+                            'draft' => ['type' => 'warning', 'icon' => 'fas fa-clock', 'label' => 'Pendiente'],
+                            'inactive' => ['type' => 'danger', 'icon' => 'fas fa-times-circle', 'label' => 'Inactivo'],
                         ];
-                        $currentState = $stateConfig[$state] ?? ['type' => 'secondary', 'label' => ucfirst($state)];
+                        $current = $stateConfig[$state] ?? [
+                            'type' => 'secondary',
+                            'icon' => 'fas fa-tag',
+                            'label' => ucfirst($state),
+                        ];
                     @endphp
-                    <x-admin.ui.badge :type="$currentState['type']">
-                        {{ $currentState['label'] }}
+
+                    <x-admin.ui.badge :type="$current['type']" :icon="$current['icon']" size="lg">
+                        {{ $current['label'] }}
                     </x-admin.ui.badge>
                 </div>
 
@@ -51,7 +54,8 @@
                 <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <span class="block text-sm text-gray-500 font-montserrat">Precio</span>
-                        <span class="text-xl font-semibold text-gray-900">${{ number_format($product->price, 2) }}</span>
+                        <span
+                            class="text-xl font-semibold text-gray-900">${{ number_format($product->price, 2) }}</span>
                     </div>
                     <div>
                         <span class="block text-sm text-gray-500 font-montserrat">Stock</span>
@@ -59,16 +63,13 @@
                     </div>
                 </div>
 
-                @if($product->hasImages())
+                @if ($product->hasImages())
                     <div class="mt-8">
                         <h4 class="text-lg font-semibold text-gray-800 mb-3">{{ __('Imágenes') }}</h4>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            @foreach($product->getMedia('default') as $img)
-                                <x-admin.ui.product-image 
-                                    :media="$img" 
-                                    :clickable="true"
-                                    class="w-full h-32 object-cover rounded-lg border-2 border-gray-200"
-                                />
+                            @foreach ($product->getMedia('default') as $img)
+                                <x-admin.ui.product-image :media="$img" :clickable="true"
+                                    class="w-full h-32 object-cover rounded-lg border-2 border-gray-200" />
                             @endforeach
                         </div>
                     </div>
@@ -79,7 +80,8 @@
                     @forelse($product->propertyValues as $pv)
                         <div class="flex items-center justify-between py-3 border-b last:border-b-0">
                             <span class="text-sm text-gray-500 font-montserrat">{{ $pv->property->name }}</span>
-                            <span class="text-sm font-semibold font-montserrat text-gray-800">{{ $pv->value }}</span>
+                            <span
+                                class="text-sm font-semibold font-montserrat text-gray-800">{{ $pv->value }}</span>
                         </div>
                     @empty
                         <p class="text-sm text-gray-500 font-montserrat">{{ __('Sin propiedades asignadas') }}</p>
@@ -89,25 +91,31 @@
                 <div class="mt-8 flex items-center gap-3 border-t pt-6">
                     <x-admin.ui.button type="primary" :href="route('admin.products.edit', $product)">
                         <svg class="w-4 h-4 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
+                            </path>
                         </svg>
                         {{ __('Editar') }}
                     </x-admin.ui.button>
-                    
-                    <form method="POST" action="{{ route('admin.products.destroy', $product) }}" onsubmit="return confirm('{{ __('¿Seguro que deseas eliminar este producto?') }}')">
+
+                    <form method="POST" action="{{ route('admin.products.destroy', $product) }}"
+                        onsubmit="return confirm('{{ __('¿Seguro que deseas eliminar este producto?') }}')">
                         @csrf
                         @method('DELETE')
                         <x-danger-button>
                             <svg class="w-4 h-4 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                                </path>
                             </svg>
                             {{ __('Eliminar') }}
                         </x-danger-button>
                     </form>
-                    
+
                     <x-admin.ui.button type="secondary" :href="route('admin.products.index')">
                         <svg class="w-4 h-4 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                         </svg>
                         {{ __('Volver') }}
                     </x-admin.ui.button>
