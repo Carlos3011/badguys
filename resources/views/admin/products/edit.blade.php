@@ -41,10 +41,10 @@
                     </div>
 
                     @php
-        $selectedCategory = optional($product->taxons->firstWhere('taxonomy_id', 1))->id;
-        $selectedBrand = optional($product->taxons->firstWhere('taxonomy_id', 2))->id;
-        $selectedSeason = optional($product->taxons->firstWhere('taxonomy_id', 3))->id;
-    @endphp
+                        $selectedCategory = optional($product->taxons->firstWhere('taxonomy_id', 1))->id;
+                        $selectedBrand = optional($product->taxons->firstWhere('taxonomy_id', 2))->id;
+                        $selectedSeason = optional($product->taxons->firstWhere('taxonomy_id', 3))->id;
+                    @endphp
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div>
@@ -86,14 +86,19 @@
                     </div>
 
                     <div>
-                        <h3 class="text-lg font-semibold text-gray-800">{{ __('Imágenes actuales') }}</h3>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-3">{{ __('Imágenes actuales') }}</h3>
                         @php
                             $images = $product->getMedia('default');
                         @endphp
                         @if($images->count())
-                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-2">
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                                 @foreach($images as $img)
-                                    <img src="{{ asset($img->getUrl()) }}" alt="imagen" class="w-full h-32 object-cover rounded-lg border">
+                                    <div class="relative group">
+                                        <img src="{{ $img->getFullUrl() }}" alt="imagen" class="w-full h-32 object-cover rounded-lg border-2 border-gray-200">
+                                        <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white text-xs p-2 rounded-b-lg">
+                                            <p class="truncate">{{ $img->file_name }}</p>
+                                        </div>
+                                    </div>
                                 @endforeach
                             </div>
                         @else
@@ -102,13 +107,21 @@
                     </div>
 
                     <div>
-                        <x-admin.forms.file-upload label="Imágenes (reemplaza al subir nuevas)" name="images[]" accept="image/*" :preview="true" multiple />
-                        <p class="mt-1 text-xs text-gray-500">{{ __('Si subes nuevas imágenes, se reemplazarán las actuales.') }}</p>
+                        <x-admin.forms.file-upload 
+                            label="Nuevas imágenes (reemplazarán las actuales)" 
+                            name="images" 
+                            accept="image/*" 
+                            :preview="true" 
+                            :multiple="true"
+                            :maxFiles="4"
+                            help="Si subes nuevas imágenes, se reemplazarán todas las actuales."
+                        />
+                        @error('images')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
                         @error('images.*')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
-
-                        <div id="edit-images-preview" class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-2"></div>
                     </div>
 
                     <div>
@@ -136,23 +149,4 @@
             </div>
         </div>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const input = document.querySelector('input[name="images[]"]');
-            const preview = document.getElementById('edit-images-preview');
-            if (input && preview) {
-                input.addEventListener('change', function(e) {
-                    preview.innerHTML = '';
-                    Array.from(e.target.files).forEach(file => {
-                        const url = URL.createObjectURL(file);
-                        const img = document.createElement('img');
-                        img.src = url;
-                        img.alt = 'preview';
-                        img.className = 'w-full h-32 object-cover rounded-lg border';
-                        preview.appendChild(img);
-                    });
-                });
-            }
-        });
-    </script>
 </x-admin-layout>
