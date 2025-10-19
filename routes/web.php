@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\CustomerController;
 
 
 // Grupo de rutas públicas sin middleware
@@ -51,10 +52,14 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('categories', CategoryController::class);
         Route::resource('products', ProductController::class);
+        Route::resource('customers', CustomerController::class);
+        
+        // Rutas adicionales para acciones específicas de clientes
+        Route::patch('customers/{customer}/activate', [CustomerController::class, 'activate'])->name('customers.activate');
+        Route::patch('customers/{customer}/deactivate', [CustomerController::class, 'deactivate'])->name('customers.deactivate');
+        Route::patch('customers/{customer}/verify-email', [CustomerController::class, 'verifyEmail'])->name('customers.verify-email');
+        Route::patch('customers/{customer}/unverify-email', [CustomerController::class, 'unverifyEmail'])->name('customers.unverify-email');
     });
-    Route::get('/admin/customers', function () {
-        return view('admin.customers.index');
-    })->name('admin.customers.index');
 
     Route::get('/admin/orders', function () {
         return view('admin.orders.index');
