@@ -13,7 +13,17 @@ class CategoryController extends Controller
     // List all categories (taxons)
     public function index()
     {
-        $taxons = Taxon::with('taxonomy')->orderBy('taxonomy_id')->get();
+        $taxons = Taxon::with('taxonomy')->orderBy('taxonomy_id')->paginate(10);
+        
+        // Agregar el conteo de productos para cada taxon
+        $taxons->getCollection()->transform(function ($taxon) {
+            $taxon->products_count = \DB::table('model_taxons')
+                ->where('taxon_id', $taxon->id)
+                ->where('model_type', 'App\Models\Product')
+                ->count();
+            return $taxon;
+        });
+        
         return view('admin.categories.index', compact('taxons'));
     }
 
