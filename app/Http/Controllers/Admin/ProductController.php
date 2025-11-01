@@ -6,15 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Vanilo\Category\Models\Taxon;
-use Vanilo\Properties\Models\Property;
-use Vanilo\Properties\Models\PropertyValue;
 
 class ProductController extends Controller
 {
     // Mostrar lista de productos
     public function index()
     {
-        $products = Product::with('taxons', 'propertyValues')->paginate(10);
+        $products = Product::with('taxons')->paginate(10);
         return view('admin.products.index', compact('products'));
     }
 
@@ -24,9 +22,8 @@ class ProductController extends Controller
         $categories = Taxon::where('taxonomy_id', 1)->get(); // categorías
         $brands     = Taxon::where('taxonomy_id', 2)->get(); // marcas
         $seasons    = Taxon::where('taxonomy_id', 3)->get(); // temporadas
-        $properties = Property::all();
 
-        return view('admin.products.create', compact('categories', 'brands', 'seasons', 'properties'));
+        return view('admin.products.create', compact('categories', 'brands', 'seasons'));
     }
 
     // Guardar producto
@@ -41,29 +38,27 @@ class ProductController extends Controller
             'category'   => 'nullable|exists:taxons,id',
             'brand'      => 'nullable|exists:taxons,id',
             'season'     => 'nullable|exists:taxons,id',
-            'properties' => 'nullable|array',
+            'excerpt' => 'nullable|string',
+            'description' => 'nullable|string',
             'images'     => 'required|array|min:1|max:4',
             'images.*'   => 'required|file|mimetypes:image/jpeg,image/png,image/jpg,image/gif,image/webp|max:4096',
         ]);
 
         // Crear producto
         $product = Product::create([
-            'name'  => $request->name,
-            'sku'   => $request->sku,
-            'price' => $request->price ?? 0,
-            'stock' => $request->stock ?? 0,
-            'state' => $request->state ?? 'draft',
+            'name'        => $request->name,
+            'sku'         => $request->sku,
+            'excerpt'     => $request->excerpt,
+            'description' => $request->description,
+            'price'       => $request->price ?? 0,
+            'stock'       => $request->stock ?? 0,
+            'state'       => $request->state ?? 'draft',
         ]);
 
         // Asociar taxons
         $taxonIds = array_filter([$request->category, $request->brand, $request->season]);
         if (!empty($taxonIds)) {
             $product->taxons()->sync($taxonIds);
-        }
-
-        // Asignar propiedades
-        if ($request->filled('properties')) {
-            $product->assignPropertyValues($request->properties);
         }
 
         // Subir imágenes múltiples
@@ -85,9 +80,8 @@ class ProductController extends Controller
         $categories = Taxon::where('taxonomy_id', 1)->get();
         $brands     = Taxon::where('taxonomy_id', 2)->get();
         $seasons    = Taxon::where('taxonomy_id', 3)->get();
-        $properties = Property::all();
 
-        return view('admin.products.edit', compact('product', 'categories', 'brands', 'seasons', 'properties'));
+        return view('admin.products.edit', compact('product', 'categories', 'brands', 'seasons'));
     }
 
     // Actualizar producto
@@ -102,27 +96,25 @@ class ProductController extends Controller
             'category'   => 'nullable|exists:taxons,id',
             'brand'      => 'nullable|exists:taxons,id',
             'season'     => 'nullable|exists:taxons,id',
-            'properties' => 'nullable|array',
+            'excerpt' => 'nullable|string',
+            'description' => 'nullable|string',
             'images'     => 'nullable|array|max:4',
             'images.*'   => 'required|file|mimetypes:image/jpeg,image/png,image/jpg,image/gif,image/webp|max:4096',
         ]);
 
         $product->update([
-            'name'  => $request->name,
-            'sku'   => $request->sku,
-            'price' => $request->price ?? 0,
-            'stock' => $request->stock ?? 0,
-            'state' => $request->state ?? $product->state,
+            'name'        => $request->name,
+            'sku'         => $request->sku,
+            'excerpt'     => $request->excerpt,
+            'description' => $request->description,
+            'price'       => $request->price ?? 0,
+            'stock'       => $request->stock ?? 0,
+            'state'       => $request->state ?? $product->state,
         ]);
 
         // Sincronizar taxons
         $taxonIds = array_filter([$request->category, $request->brand, $request->season]);
         $product->taxons()->sync($taxonIds);
-
-        // Reemplazar propiedades
-        if ($request->filled('properties')) {
-            $product->replacePropertyValuesByScalar($request->properties);
-        }
 
         // Subir nuevas imágenes si existen
         if ($request->hasFile('images')) {
@@ -147,7 +139,7 @@ class ProductController extends Controller
     // Mostrar detalles de un producto
     public function show(Product $product)
     {
-        $product->load('taxons', 'propertyValues');
+        $product->load('taxons');
         $images = $product->getMedia('default');
 
         return view('admin.products.show', compact('product', 'images'));

@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Vanilo\Product\Models\Product as BaseProduct;
-use Vanilo\Properties\Traits\HasPropertyValues;
 use Vanilo\Support\Traits\HasImagesFromMediaLibrary;
 use Vanilo\Category\Traits\HasTaxons;
 use Spatie\MediaLibrary\HasMedia;
@@ -13,10 +12,27 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class Product extends BaseProduct implements HasMedia
 {
-    use HasPropertyValues;           // Para propiedades
     use HasImagesFromMediaLibrary;   // Manejo de imágenes
     use InteractsWithMedia;          // Trait de Spatie
     use HasTaxons;                   // Relación con taxons
+
+    // Campos que se pueden asignar masivamente
+    protected $fillable = [
+        'name',
+        'sku',
+        'excerpt',
+        'description',
+        'price',
+        'stock',
+        'state',
+        'weight',
+        'height',
+        'width',
+        'length',
+        'meta_title',
+        'meta_description',
+        'meta_keywords',
+    ];
 
     // Opcional: si quieres valores por defecto
     protected $attributes = [

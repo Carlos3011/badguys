@@ -105,6 +105,30 @@
                     </div>
                 </x-admin.forms.section>
 
+                <!-- Resumen y Descripción -->
+                <x-admin.forms.section 
+                    title="Resumen y Descripción"
+                    description="Agrega un resumen y una descripción detallada para tu producto"
+                    icon="fas fa-file-alt"
+                    iconColor="orange">
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <x-admin.forms.textarea 
+                            label="Resumen" 
+                            name="excerpt" 
+                            placeholder="Resumen breve del producto"
+                            help="Resumen conciso para resaltar el producto"
+                            icon="fas fa-quote-left" />
+
+                        <x-admin.forms.textarea 
+                            label="Descripción" 
+                            name="description" 
+                            placeholder="Descripción detallada del producto"
+                            help="Descripción completa para comprender el producto"
+                            icon="fas fa-file-alt" />
+                    </div>
+                </x-admin.forms.section>
+
                 <!-- Imágenes -->
                 <x-admin.forms.section 
                     title="Galería de Imágenes"
@@ -162,39 +186,7 @@
                     @enderror
                 </x-admin.forms.section>
 
-                <!-- Propiedades -->
-                @if($properties->count())
-                    <x-admin.forms.section 
-                        title="Propiedades del Producto"
-                        description="Características específicas y detalles técnicos (opcional)"
-                        icon="fas fa-sliders-h"
-                        iconColor="indigo">
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            @foreach($properties as $property)
-                                @php
-                                    $propertyIcons = [
-                                        'color' => 'fas fa-palette',
-                                        'talla' => 'fas fa-ruler',
-                                        'size' => 'fas fa-ruler',
-                                        'material' => 'fas fa-cube',
-                                        'peso' => 'fas fa-weight',
-                                        'weight' => 'fas fa-weight',
-                                        'dimensiones' => 'fas fa-arrows-alt',
-                                        'dimensions' => 'fas fa-arrows-alt',
-                                    ];
-                                    $iconClass = $propertyIcons[strtolower($property->name)] ?? 'fas fa-tag';
-                                @endphp
-                                <x-admin.forms.input
-                                    :label="$property->name"
-                                    :name="'properties['.$property->id.']'"
-                                    :placeholder="'Ej: ' . $property->type"
-                                    :icon="$iconClass"
-                                />
-                            @endforeach
-                        </div>
-                    </x-admin.forms.section>
-                @endif
 
                 <!-- Resumen del Formulario -->
                 <div class="bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-6 border border-gray-200">

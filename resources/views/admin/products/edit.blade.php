@@ -135,6 +135,29 @@
                     </div>
                 </x-admin.forms.section>
 
+                <!-- Descripción -->
+                <x-admin.forms.section 
+                    title="Resumen y Descripción"
+                    description="Detalles y características del producto"
+                    icon="fas fa-info-circle"
+                    iconColor="orange">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <x-admin.forms.textarea 
+                            label="Resumen" 
+                            name="excerpt" 
+                            :value="$product->excerpt"
+                            placeholder="Una breve descripción del producto"
+                            icon="fas fa-file-alt" />
+
+                        <x-admin.forms.textarea 
+                        label="Descripción Completa" 
+                        name="description" 
+                        :value="$product->description"
+                        placeholder="Una descripción detallada del producto"
+                        icon="fas fa-file-alt" />
+                    </div>
+                </x-admin.forms.section>
+
                 <!-- Imágenes -->
                 <x-admin.forms.section 
                     title="Galería de Imágenes"
@@ -198,37 +221,7 @@
                     </div>
                 </x-admin.forms.section>
 
-                <!-- Propiedades -->
-                @if($properties->count())
-                    <x-admin.forms.section 
-                        title="Propiedades del Producto"
-                        description="Características específicas y detalles técnicos"
-                        icon="fas fa-sliders-h"
-                        iconColor="indigo">
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            @foreach($properties as $property)
-                                @php
-                                    $pv = optional($product->propertyValues->firstWhere('property_id', $property->id))->value;
-                                    $propertyIcons = [
-                                        'color' => 'fas fa-palette',
-                                        'talla' => 'fas fa-ruler',
-                                        'material' => 'fas fa-cube',
-                                        'peso' => 'fas fa-weight',
-                                    ];
-                                    $iconClass = $propertyIcons[strtolower($property->name)] ?? 'fas fa-info-circle';
-                                @endphp
-                                <x-admin.forms.input
-                                    :label="$property->name"
-                                    :name="'properties['.$property->id.']'"
-                                    :value="$pv"
-                                    :placeholder="'Ingrese ' . strtolower($property->name)"
-                                    :icon="$iconClass"
-                                />
-                            @endforeach
-                        </div>
-                    </x-admin.forms.section>
-                @endif
 
                 <!-- Botones de Acción -->
                 <div class="sticky bottom-4 z-10">
