@@ -146,13 +146,12 @@
             <h4 class="text-lg font-semibold text-gray-800 mb-4">{{ __('Imágenes del producto') }}</h4>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 @foreach ($product->getMedia('default') as $img)
-                    <div class="relative group">
-                        <img src="{{ $img->getUrl() }}" 
-                             alt="{{ $product->name }}"
-                             class="w-full h-48 object-cover rounded-lg border-2 border-gray-200 group-hover:border-blue-500 transition-colors cursor-pointer"
-                             onclick="openImageModal('{{ $img->getUrl() }}')">
-                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-opacity rounded-lg"></div>
-                    </div>
+                    <x-admin.ui.product-image 
+                        :media="$img"
+                        :product="$product"
+                        class="w-full h-48 object-cover rounded-lg border-2 border-gray-200"
+                        :clickable="true"
+                        :showName="false" />
                 @endforeach
             </div>
         </div>

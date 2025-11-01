@@ -79,7 +79,7 @@
                     </div>
                     <div class="mt-6 text-center">
                         <p class="text-sm text-gray-500 italic">
-                            💡 Esta es una vista previa interactiva de cómo se mostrará en la tienda
+                            Esta es una vista previa interactiva de cómo se mostrará en la tienda
                         </p>
                     </div>
                 </div>
