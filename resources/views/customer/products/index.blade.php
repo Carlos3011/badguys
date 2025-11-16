@@ -7,6 +7,12 @@
 
     <div class="py-12 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-6">
+                <x-customer.ui.search-bar />
+            </div>
+            <div class="mb-6">
+                <x-customer.ui.filters :categories="$categories" />
+            </div>
             <x-customer.product.grid :products="$products" />
         </div>
     </div>
