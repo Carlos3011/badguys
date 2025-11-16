@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\Customer\ProductController as CustomerProductController;
 
 
 // Grupo de rutas públicas sin middleware
@@ -76,9 +77,8 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/customer/dashboard', function () {
-        return view('customer.dashboard');
-    })->name('customer.dashboard');
+    Route::get('/customer/dashboard', [CustomerProductController::class, 'index'])->name('customer.dashboard');
+    Route::get('/customer/products/{product}', [CustomerProductController::class, 'show'])->name('customer.products.show');
 });
 
 // Rutas de perfil para usuarios autenticados

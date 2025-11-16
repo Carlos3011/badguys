@@ -225,10 +225,12 @@
         </div>
 
         {{-- Nombre del Producto --}}
-        <h3
-            class="font-roboto-flex {{ $size['title'] }} font-semibold text-gray-900 mb-2 line-clamp-2 min-h-[3.5rem] leading-tight hover:text-blue-600 transition-colors cursor-pointer">
-            {{ $product->name }}
-        </h3>
+        <a href="{{ route('customer.products.show', $product) }}">
+            <h3
+                class="font-roboto-flex {{ $size['title'] }} font-semibold text-gray-900 mb-2 line-clamp-2 min-h-[3.5rem] leading-tight hover:text-black transition-colors cursor-pointer">
+                {{ $product->name }}
+            </h3>
+        </a>
 
         {{-- Excerpt (Descripción Corta) --}}
         @if ($product->excerpt)
@@ -286,14 +288,14 @@
                     <span class="text-sm">{{ $isInStock ? 'Agregar' : 'Agotado' }}</span>
                 </button>
 
-                <button type="button"
+                <a href="{{ route('customer.products.show', $product) }}"
                     class="bg-gray-100 hover:bg-gray-200 text-gray-700 p-2.5 rounded-lg transition-colors duration-200"
                     title="Ver detalles">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
-                </button>
+                </a>
             </div>
         @endif
     </div>
