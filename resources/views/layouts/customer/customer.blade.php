@@ -8,6 +8,9 @@
 
     <title>{{ config('app.name', 'Laravel') }} - Customer</title>
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -39,6 +42,7 @@
         </main>
         @include('layouts.customer.footer')
     </div>
+    @stack('scripts')
 </body>
 
 </html>
