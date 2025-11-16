@@ -2,11 +2,14 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex items-center gap-8">
-                <a href="{{ route('customer.dashboard') }}" class="flex items-center space-x-3">
+                <a href="{{ route('customer.home') }}" class="flex items-center space-x-3">
                     <h3 class="text-2xl font-roboto-flex font-bold text-white tracking-wider">BADGUYS</h3>
                 </a>
                 <div class="hidden sm:flex sm:ms-10 space-x-8">
-                    <x-customer.layout.nav-link :href="route('customer.dashboard')" :active="request()->routeIs('customer.dashboard')">
+                    <x-customer.layout.nav-link :href="route('customer.home')" :active="request()->routeIs('customer.home')">
+                        {{ __('Inicio') }}
+                    </x-customer.layout.nav-link>
+                    <x-customer.layout.nav-link :href="route('customer.products.index')" :active="request()->routeIs('customer.products.index')">
                         {{ __('Productos') }}
                     </x-customer.layout.nav-link>
                 </div>
@@ -52,7 +55,8 @@
 
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden bg-black border-t border-gray-700">
         <div class="pt-2 pb-3 space-y-1">
-            <a href="{{ route('customer.dashboard') }}" class="block px-4 py-2 text-white">{{ __('Productos') }}</a>
+            <a href="{{ route('customer.home') }}" class="block px-4 py-2 text-white">{{ __('Inicio') }}</a>
+            <a href="{{ route('customer.products.index') }}" class="block px-4 py-2 text-white">{{ __('Productos') }}</a>
         </div>
         <div class="pt-4 pb-1 border-t border-gray-700">
             <div class="px-4">

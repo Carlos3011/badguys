@@ -16,12 +16,23 @@ class ProductController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(12);
 
-        return view('customer.dashboard', compact('products'));
+        return view('customer.products.index', compact('products'));
     }
 
     public function show(Product $product)
     {
         $product->load(['taxons', 'media']);
         return view('customer.products.show', compact('product'));
+    }
+
+    public function home(Request $request)
+    {
+        $products = Product::query()
+            ->with(['taxons', 'media'])
+            ->where('state', 'active')
+            ->orderBy('created_at', 'desc')
+            ->paginate(12);
+
+        return view('customer.home', compact('products'));
     }
 }
