@@ -1,0 +1,19 @@
+<x-customer-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-black leading-tight">
+            {{ __('Productos') }}
+        </h2>
+    </x-slot>
+
+    <div class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-6">
+                <x-customer.ui.search-bar />
+            </div>
+            <div class="mb-6">
+                <x-customer.ui.filters :categories="$categories" />
+            </div>
+            <x-customer.product.grid :products="$products" />
+        </div>
+    </div>
+</x-customer-layout>

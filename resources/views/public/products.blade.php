@@ -1,71 +1,7 @@
 <x-public-layout>
-    <!-- Hero Section -->
-    <section class="bg-black py-20 relative overflow-hidden">
-        <!-- Enhanced background patterns -->
-        <div class="absolute inset-0 opacity-10">
-            <div class="absolute inset-0 bg-gray-800/20"></div>
-            <div class="absolute top-0 left-0 w-full h-full bg-gray-900/10"></div>
-            
-            <!-- Animated grid pattern -->
-            <div class="absolute inset-0 opacity-5">
-                <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0); background-size: 40px 40px;"></div>
-            </div>
-        </div>
-        
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="text-center">
-                <h1 class="text-6xl lg:text-7xl font-roboto-flex font-bold text-white mb-6 tracking-wide">
-                    CATÁLOGO <span class="text-gray-300">COMPLETO</span>
-                </h1>
-                <div class="h-2 w-40 bg-white mx-auto mb-8 rounded-full"></div>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto font-montserrat leading-relaxed">
-                    Explora toda nuestra colección de productos exclusivos. Desde streetwear hasta accesorios premium, encuentra tu estilo único.
-                </p>
-            </div>
-        </div>
-    </section>
+  
 
-    <!-- Filters Section -->
-    <section class="bg-white py-8 border-b border-gray-200 sticky top-16 z-40">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-wrap items-center justify-between gap-4">
-                <!-- Category Filters -->
-                <div class="flex flex-wrap gap-3">
-                    <button class="px-6 py-2 bg-black text-white rounded-full font-montserrat font-semibold text-sm hover:bg-gray-800 transition-colors duration-200 shadow-md">
-                        Todos
-                    </button>
-                    <button class="px-6 py-2 bg-gray-100 text-gray-700 rounded-full font-montserrat font-medium text-sm hover:bg-gray-200 transition-colors duration-200">
-                        Streetwear
-                    </button>
-                    <button class="px-6 py-2 bg-gray-100 text-gray-700 rounded-full font-montserrat font-medium text-sm hover:bg-gray-200 transition-colors duration-200">
-                        Accesorios
-                    </button>
-                    <button class="px-6 py-2 bg-gray-100 text-gray-700 rounded-full font-montserrat font-medium text-sm hover:bg-gray-200 transition-colors duration-200">
-                        Calzado
-                    </button>
-                    <button class="px-6 py-2 bg-gray-100 text-gray-700 rounded-full font-montserrat font-medium text-sm hover:bg-gray-200 transition-colors duration-200">
-                        Edición Limitada
-                    </button>
-                </div>
-                
-                <!-- Search and Sort -->
-                <div class="flex items-center gap-4">
-                    <div class="relative">
-                        <input type="text" placeholder="Buscar productos..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg font-montserrat text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent">
-                        <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
-                    </div>
-                    <select class="px-4 py-2 border border-gray-300 rounded-lg font-montserrat text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent">
-                        <option>Ordenar por</option>
-                        <option>Precio: Menor a Mayor</option>
-                        <option>Precio: Mayor a Menor</option>
-                        <option>Más Populares</option>
-                        <option>Más Recientes</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-    </section>
-
+   
     <!-- Products Grid Section -->
     <section class="bg-white py-16 relative overflow-hidden">
         <!-- Background texture -->
