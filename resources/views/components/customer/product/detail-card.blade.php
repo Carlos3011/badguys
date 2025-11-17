@@ -229,51 +229,39 @@
                 </div>
             @endif
 
-            {{-- Stock y Disponibilidad --}}
-            <div class="bg-white border-2 border-black rounded-xl p-5">
-                <div class="flex items-center justify-between mb-3">
-                    <span class="text-sm font-semibold text-gray-700 uppercase tracking-wide">Disponibilidad:</span>
-                    @if($isInStock)
-                        <span class="flex items-center text-black font-bold text-lg">
-                            <i class="fas fa-check mr-2"></i>
-                            En Stock
-                        </span>
-                    @else
-                        <span class="flex items-center text-black font-bold text-lg">
-                            <i class="fas fa-ban mr-2"></i>
-                            Agotado
-                        </span>
+            @if($product->height || $product->width || $product->length || $product->weight)
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+                    @if($product->height)
+                        <div class="text-sm text-gray-700"><span class="text-gray-500">Alto</span> <span class="font-semibold">{{ $product->height }} cm</span></div>
+                    @endif
+                    @if($product->width)
+                        <div class="text-sm text-gray-700"><span class="text-gray-500">Ancho</span> <span class="font-semibold">{{ $product->width }} cm</span></div>
+                    @endif
+                    @if($product->length)
+                        <div class="text-sm text-gray-700"><span class="text-gray-500">Largo</span> <span class="font-semibold">{{ $product->length }} cm</span></div>
+                    @endif
+                    @if($product->weight)
+                        <div class="text-sm text-gray-700"><span class="text-gray-500">Peso</span> <span class="font-semibold">{{ $product->weight }} kg</span></div>
                     @endif
                 </div>
-                
-                <div class="grid grid-cols-2 gap-4 mt-4">
-                    <div class="bg-white rounded-lg p-3">
-                        <span class="block text-xs text-gray-500 mb-1">Unidades disponibles</span>
-                        <span class="text-2xl font-bold text-black">
-                            {{ number_format($stock, 0) }}
-                        </span>
+            @endif
+
+            <div class="py-3 border-t border-gray-200">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2 text-sm">
+                        <span class="font-semibold">Disponibilidad</span>
+                        @if($isInStock)
+                            <span class="inline-flex items-center text-black"><i class="fas fa-check mr-1"></i>En stock</span>
+                        @else
+                            <span class="inline-flex items-center text-black"><i class="fas fa-ban mr-1"></i>Agotado</span>
+                        @endif
                     </div>
-                    <div class="bg-white rounded-lg p-3">
-                        <span class="block text-xs text-gray-500 mb-1">Estado</span>
-                        <span class="text-sm font-semibold text-black inline-flex items-center gap-2">
-                            @if($isLowStock)
-                                <i class="fas fa-exclamation-triangle"></i> Stock Bajo
-                            @elseif($isInStock)
-                                <i class="fas fa-check"></i> Disponible
-                            @else
-                                <i class="fas fa-ban"></i> Sin Stock
-                            @endif
-                        </span>
+                    <div class="text-sm text-gray-700">
+                        Unidades: <span class="font-semibold">{{ number_format($stock, 0) }}</span>
                     </div>
                 </div>
-                
                 @if($isLowStock)
-                    <div class="mt-3 bg-white border border-black rounded-lg p-3">
-                        <p class="text-sm text-black font-medium flex items-center">
-                            <i class="fas fa-exclamation-triangle mr-2 flex-shrink-0"></i>
-                            ¡Últimas unidades! Ordena pronto antes de que se agoten.
-                        </p>
-                    </div>
+                    <div class="mt-2 text-xs text-black"><i class="fas fa-exclamation-triangle mr-1"></i>Stock bajo</div>
                 @endif
             </div>
 
@@ -281,26 +269,28 @@
             @if($isInStock)
                 <div class="flex items-center gap-4">
                     <label for="{{ $componentId }}-quantity" class="text-sm font-semibold text-gray-700">Cantidad:</label>
-                    <div class="flex items-center border-2 border-gray-300 rounded-lg overflow-hidden">
-                        <button 
+                    <div class="group flex items-center rounded-xl border border-black bg-white shadow-sm overflow-hidden">
+                        <button
                             type="button"
                             onclick="decrementQuantity{{ $componentId }}()"
-                            class="px-4 py-3 bg-white hover:bg-black hover:text-white text-black border-r border-black transition-colors"
+                            class="h-11 w-11 flex items-center justify-center text-black transition-colors group-hover:bg-gray-50 hover:bg-black hover:text-white"
+                            aria-label="Disminuir"
                         >
                             <i class="fas fa-minus"></i>
                         </button>
-                        <input 
-                            type="number" 
+                        <input
+                            type="number"
                             id="{{ $componentId }}-quantity"
                             value="1"
                             min="1"
                             max="{{ $stock }}"
-                            class="w-16 text-center py-3 border-none focus:ring-0 font-semibold text-gray-900"
+                            class="w-20 text-center font-semibold text-gray-900 bg-transparent focus:outline-none focus:ring-0 h-11"
                         >
-                        <button 
+                        <button
                             type="button"
                             onclick="incrementQuantity{{ $componentId }}()"
-                            class="px-4 py-3 bg-white hover:bg-black hover:text-white text-black border-l border-black transition-colors"
+                            class="h-11 w-11 flex items-center justify-center text-black transition-colors group-hover:bg-gray-50 hover:bg-black hover:text-white"
+                            aria-label="Aumentar"
                         >
                             <i class="fas fa-plus"></i>
                         </button>
@@ -323,7 +313,7 @@
                 <div class="grid grid-cols-2 gap-3">
                     <button 
                         type="button"
-                        class="bg-white hover:bg-black hover:text-white text-black font-semibold py-3 px-4 rounded-xl border-2 border-black transition-all duration-200 flex items-center justify-center gap-2 shadow-sm hover:shadow-md"
+                        class="bg-white hover:bg-black hover:text-white text-black font-semibold py-3 px-4 rounded-xl border border-black transition-all duration-200 flex items-center justify-center gap-2 shadow-sm hover:shadow-md"
                     >
                         <i class="fas fa-heart"></i>
                         <span>Favoritos</span>
@@ -331,7 +321,7 @@
                     
                     <button 
                         type="button"
-                        class="bg-white hover:bg-black hover:text-white text-black font-semibold py-3 px-4 rounded-xl border-2 border-black transition-all duration-200 flex items-center justify-center gap-2 shadow-sm hover:shadow-md"
+                        class="bg-white hover:bg-black hover:text-white text-black font-semibold py-3 px-4 rounded-xl border border-black transition-all duration-200 flex items-center justify-center gap-2 shadow-sm hover:shadow-md"
                     >
                         <i class="fas fa-share-alt"></i>
                         <span>Compartir</span>
@@ -339,38 +329,7 @@
                 </div>
             </div>
 
-            {{-- Información Adicional --}}
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-6 border-t border-gray-200">
-                <div class="flex items-start gap-3">
-                    <div class="flex-shrink-0 w-10 h-10 bg-white border border-black rounded-lg flex items-center justify-center">
-                        <i class="fas fa-truck"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold text-gray-900 text-sm">Envío Gratis</h4>
-                        <p class="text-xs text-gray-500">En compras mayores a $500</p>
-                    </div>
-                </div>
-                
-                <div class="flex items-start gap-3">
-                    <div class="flex-shrink-0 w-10 h-10 bg-white border border-black rounded-lg flex items-center justify-center">
-                        <i class="fas fa-shield"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold text-gray-900 text-sm">Compra Segura</h4>
-                        <p class="text-xs text-gray-500">Protección garantizada</p>
-                    </div>
-                </div>
-                
-                <div class="flex items-start gap-3">
-                    <div class="flex-shrink-0 w-10 h-10 bg-white border border-black rounded-lg flex items-center justify-center">
-                        <i class="fas fa-rotate-left"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold text-gray-900 text-sm">Devoluciones</h4>
-                        <p class="text-xs text-gray-500">30 días de garantía</p>
-                    </div>
-                </div>
-            </div>
+            
 
             {{-- Descripción Completa --}}
             @if($product->description)
@@ -423,7 +382,40 @@
                         <span class="text-sm font-semibold text-gray-900">{{ ucfirst($state) }}</span>
                     </div>
                 </div>
+                
             </div>
+            {{-- Información Adicional --}}
+            {{-- <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-6 border-t border-gray-200">
+                <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-10 h-10 bg-white border border-black rounded-lg flex items-center justify-center">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-900 text-sm">Envío Gratis</h4>
+                        <p class="text-xs text-gray-500">En compras mayores a $500</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-10 h-10 bg-white border border-black rounded-lg flex items-center justify-center">
+                        <i class="fas fa-shield"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-900 text-sm">Compra Segura</h4>
+                        <p class="text-xs text-gray-500">Protección garantizada</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-10 h-10 bg-white border border-black rounded-lg flex items-center justify-center">
+                        <i class="fas fa-rotate-left"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-900 text-sm">Devoluciones</h4>
+                        <p class="text-xs text-gray-500">30 días de garantía</p>
+                    </div>
+                </div>
+            </div> --}}
         </div>
     </div>
 </div>

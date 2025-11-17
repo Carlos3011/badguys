@@ -1,6 +1,6 @@
 <nav x-data="{ open: false }" class="bg-black border-b border-gray-700">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
+        <div class="flex justify-between h-16 relative">
             <div class="flex items-center gap-8">
                 <a href="{{ route('customer.home') }}" class="flex items-center space-x-3">
                     <h3 class="text-2xl font-roboto-flex font-bold text-white tracking-wider">BADGUYS</h3>
@@ -13,6 +13,10 @@
                         {{ __('Productos') }}
                     </x-customer.layout.nav-link>
                 </div>
+            </div>
+
+            <div class="absolute inset-0 flex justify-center items-center pointer-events-none">
+                <img id="nav-center-logo" src="{{ asset('image/logo-blanco.png') }}" alt="Logo" class="h-24 w-24 object-contain" />
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">
@@ -38,6 +42,8 @@
                         </form>
                     </x-slot>
                 </x-dropdown>
+                <x-customer.ui.wishlist class="ml-3" />
+                <x-customer.ui.cart class="ml-2" />
             </div>
 
             <div class="-me-2 flex items-center sm:hidden">
@@ -68,3 +74,17 @@
         </div>
     </div>
 </nav>
+
+<script>
+    (function () {
+        var el = document.getElementById('nav-center-logo');
+        if (!el) return;
+        var angle = 0;
+        function tick() {
+            angle = (angle + 0.3) % 360;
+            el.style.transform = 'rotate(' + angle + 'deg)';
+            requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+    })();
+</script>

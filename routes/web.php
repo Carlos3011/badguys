@@ -78,7 +78,7 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/customer/home', [CustomerProductController::class, 'home'])->name('customer.home');
-    Route::get('/customer/dashboard', [CustomerProductController::class, 'index'])->name('customer.products.index');
+    Route::get('/customer/products', [CustomerProductController::class, 'index'])->name('customer.products.index');
     Route::get('/customer/products/{product}', [CustomerProductController::class, 'show'])->name('customer.products.show');
 });
 
