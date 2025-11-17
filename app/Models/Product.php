@@ -50,13 +50,13 @@ class Product extends BaseProduct implements HasMedia
             'taxon_id'
         );
     }
-     public function getImageUrl($media = null)
+    public function getImageUrl($media = null)
     {
         if (!$media) {
             $media = $this->getFirstMedia('default');
         }
         
-        return $media ? '/storage/' . $media->id . '/' . $media->file_name : null;
+        return $media ? asset('storage/' . $media->id . '/' . $media->file_name) : null;
     }
 
     /**
@@ -67,7 +67,7 @@ class Product extends BaseProduct implements HasMedia
         return $this->getMedia('default')->map(function($media) {
             return [
                 'id' => $media->id,
-                'url' => '/storage/' . $media->id . '/' . $media->file_name,
+                'url' => asset('storage/' . $media->id . '/' . $media->file_name),
                 'name' => $media->file_name,
                 'size' => $media->size,
             ];

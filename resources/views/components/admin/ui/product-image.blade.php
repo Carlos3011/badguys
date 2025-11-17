@@ -11,12 +11,12 @@
     $imageName = 'Sin imagen';
     
     if ($media) {
-        $imageUrl = '/storage/' . $media->id . '/' . $media->file_name;
+        $imageUrl = asset('storage/' . $media->id . '/' . $media->file_name);
         $imageName = $media->file_name;
     } elseif ($product) {
         $firstMedia = $product->getFirstMedia('default');
         if ($firstMedia) {
-            $imageUrl = '/storage/' . $firstMedia->id . '/' . $firstMedia->file_name;
+            $imageUrl = asset('storage/' . $firstMedia->id . '/' . $firstMedia->file_name);
             $imageName = $firstMedia->file_name;
         }
     }

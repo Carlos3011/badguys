@@ -11,7 +11,7 @@ class ProductController extends Controller
 {
     public function home(Request $request)
     {
-        $query = Product::query()->with(['taxons', 'media'])->where('state', 'active');
+        $query = Product::query()->with(['taxons', 'media']);
 
         if ($request->filled('q')) {
             $q = $request->string('q');
@@ -49,7 +49,7 @@ class ProductController extends Controller
         }
 
         if ($query->count() === 0) {
-            $query = Product::query()->with(['taxons', 'media'])->where('state', 'active');
+            $query = Product::query()->with(['taxons', 'media']);
             if ($sort === 'price_asc') {
                 $query->orderBy('price', 'asc');
             } elseif ($sort === 'price_desc') {
@@ -73,7 +73,7 @@ class ProductController extends Controller
     
     public function index(Request $request)
     {
-        $query = Product::query()->with(['taxons', 'media'])->where('state', 'active');
+        $query = Product::query()->with(['taxons', 'media']);
 
         if ($request->filled('q')) {
             $q = $request->string('q');
@@ -111,7 +111,7 @@ class ProductController extends Controller
         }
 
         if ($query->count() === 0) {
-            $query = Product::query()->with(['taxons', 'media'])->where('state', 'active');
+            $query = Product::query()->with(['taxons', 'media']);
             if ($sort === 'price_asc') {
                 $query->orderBy('price', 'asc');
             } elseif ($sort === 'price_desc') {

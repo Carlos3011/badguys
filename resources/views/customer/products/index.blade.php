@@ -15,7 +15,7 @@
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 @forelse($products as $product)
-                    <x-customer.product.card :product="$product" :showActions="false" :showQuickView="false" cardSize="default" class="bg-white border border-black grayscale" />
+                    <x-customer.product.card :product="$product" :showActions="false" :showQuickView="false" cardSize="default" />
                 @empty
                     <div class="col-span-full text-center text-black">{{ __('No hay productos disponibles.') }}</div>
                 @endforelse

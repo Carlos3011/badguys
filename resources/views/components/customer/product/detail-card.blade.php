@@ -344,46 +344,6 @@
                 </div>
             @endif
 
-            {{-- Especificaciones Técnicas --}}
-            <div class="border-t border-gray-200 pt-6">
-                <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                    <i class="fas fa-list"></i>
-                    Especificaciones
-                </h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    <div class="bg-gray-50 rounded-lg p-4 flex justify-between items-center">
-                        <span class="text-sm font-medium text-gray-600">SKU</span>
-                        <span class="text-sm font-semibold text-gray-900 font-mono">{{ $product->sku }}</span>
-                    </div>
-                    <div class="bg-gray-50 rounded-lg p-4 flex justify-between items-center">
-                        <span class="text-sm font-medium text-gray-600">Precio</span>
-                        <span class="text-sm font-semibold text-gray-900">${{ number_format($product->price, 2) }} MXN</span>
-                    </div>
-                    @if($category)
-                        <div class="bg-gray-50 rounded-lg p-4 flex justify-between items-center">
-                            <span class="text-sm font-medium text-gray-600">Categoría</span>
-                            <span class="text-sm font-semibold text-gray-900">{{ $category->name }}</span>
-                        </div>
-                    @endif
-                    @if($brand)
-                        <div class="bg-gray-50 rounded-lg p-4 flex justify-between items-center">
-                            <span class="text-sm font-medium text-gray-600">Marca</span>
-                            <span class="text-sm font-semibold text-gray-900">{{ $brand->name }}</span>
-                        </div>
-                    @endif
-                    @if($season)
-                        <div class="bg-gray-50 rounded-lg p-4 flex justify-between items-center">
-                            <span class="text-sm font-medium text-gray-600">Temporada</span>
-                            <span class="text-sm font-semibold text-gray-900">{{ $season->name }}</span>
-                        </div>
-                    @endif
-                    <div class="bg-gray-50 rounded-lg p-4 flex justify-between items-center">
-                        <span class="text-sm font-medium text-gray-600">Estado</span>
-                        <span class="text-sm font-semibold text-gray-900">{{ ucfirst($state) }}</span>
-                    </div>
-                </div>
-                
-            </div>
             {{-- Información Adicional --}}
             {{-- <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-6 border-t border-gray-200">
                 <div class="flex items-start gap-3">

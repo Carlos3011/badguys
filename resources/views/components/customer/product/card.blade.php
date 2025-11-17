@@ -62,11 +62,11 @@
     $slideshowId = 'slideshow-' . $product->id;
 @endphp
 
-<div
-    {{ $attributes->merge(['class' => 'bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 ' . $size['container']]) }}>
+<a href="{{ route('customer.products.show', $product) }}"
+    {{ $attributes->merge(['class' => 'block cursor-pointer ' . $size['container']]) }}>
 
     {{-- Contenedor de Imagen con Slideshow --}}
-    <div class="relative {{ $size['image'] }} bg-gray-100 overflow-hidden group">
+    <div class="relative {{ $size['image'] }} overflow-hidden">
 
         @if ($productImages->count() > 0)
             {{-- Slideshow Container --}}
@@ -83,15 +83,7 @@
                     </div>
                 @endforeach
 
-                {{-- Indicadores de Slide --}}
-                @if ($productImages->count() > 1)
-                    <div class="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex gap-1.5 z-10">
-                        @foreach ($productImages as $index => $image)
-                            <div class="slideshow-indicator w-2 h-2 rounded-full transition-all duration-300 {{ $index === 0 ? 'bg-white' : 'bg-white/50' }}"
-                                data-slide="{{ $index }}"></div>
-                        @endforeach
-                    </div>
-                @endif
+                
             </div>
 
             {{-- Overlay en hover --}}
@@ -112,7 +104,7 @@
         @endif
 
         {{-- Badges Superiores --}}
-        <div class="absolute top-3 left-3 right-3 flex justify-between items-start gap-2 z-30">
+        <div class="absolute top-3 left-3 right-3 flex justify-between items-start gap-2 z-30 hidden">
             <div class="flex flex-col gap-2">
                 {{-- Badge de Estado Borrador --}}
                 @if ($isDraft)
@@ -150,7 +142,7 @@
         {{-- Botón de Vista Rápida (opcional) --}}
         @if ($showQuickView)
             <div
-                class="absolute bottom-3 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30 {{ $productImages->count() > 1 ? 'mb-8' : '' }}">
+                class="absolute bottom-3 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30 {{ $productImages->count() > 1 ? 'mb-8' : '' }} hidden">
                 <button type="button" class="bg-white hover:bg-gray-100 text-gray-900 font-semibold px-4 py-2 rounded-lg shadow-lg flex items-center gap-2 transition-colors duration-200">
                     <i class="fas fa-eye"></i>
                     Vista Rápida
@@ -160,7 +152,7 @@
     </div>
 
     {{-- Contenido de la Card --}}
-    <div class="{{ $size['padding'] }}">
+    <div class="{{ $size['padding'] }} hidden">
 
         {{-- Categoría y Marca --}}
         <div class="flex items-center gap-2 text-xs mb-2 flex-wrap">
@@ -248,7 +240,7 @@
             </div>
         @endif
     </div>
-</div>
+</a>
 
 {{-- JavaScript para el Slideshow Automático --}}
 @if ($productImages->count() > 1)
