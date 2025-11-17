@@ -208,7 +208,7 @@
                     <span class="{{ $size['price'] }} font-bold text-gray-900">
                         ${{ number_format($product->price, 2) }}
                     </span>
-                    <span class="text-sm text-gray-500 font-medium">MXN</span>
+                    <span class="text-sm text-gray-500 font-medium">USD</span>
                 </div>
 
                 {{-- Indicador de Stock --}}

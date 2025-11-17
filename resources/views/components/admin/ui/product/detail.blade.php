@@ -53,7 +53,7 @@
         <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6">
             <span class="block text-sm text-blue-700 font-montserrat mb-2">Precio</span>
             <span class="text-3xl font-bold text-blue-900">${{ number_format($product->price, 2) }}</span>
-            <span class="text-sm text-blue-700 ml-1">MXN</span>
+            <span class="text-sm text-blue-700 ml-1">USD</span>
         </div>
         <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6">
             <span class="block text-sm text-green-700 font-montserrat mb-2">Stock</span>

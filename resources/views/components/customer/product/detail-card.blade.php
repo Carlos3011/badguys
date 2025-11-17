@@ -212,7 +212,7 @@
                     <span class="text-5xl font-bold text-gray-900">
                         ${{ number_format($product->price, 2) }}
                     </span>
-                    <span class="text-xl text-gray-500 font-medium">MXN</span>
+                    <span class="text-xl text-gray-500 font-medium">USD</span>
                 </div>
                 <p class="text-sm text-gray-500">
                     <i class="fas fa-info-circle mr-1"></i>
