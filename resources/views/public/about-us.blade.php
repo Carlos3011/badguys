@@ -13,7 +13,7 @@
                 </h1>
                 <div class="h-2 w-40 bg-black mx-auto mb-10 rounded-full"></div>
                 <p class="text-xl lg:text-2xl text-gray-600 font-montserrat leading-relaxed mb-8">
-                    Desde las calles hasta el mundo. BadGuys nació de la pasión por el streetwear auténtico y la cultura urbana que define una generación.
+                    Desde las calles hasta el mundo. BIGI.NYC nació de la pasión por el streetwear auténtico y la cultura urbana que define una generación.
                 </p>
                 <p class="text-lg text-gray-700 font-montserrat italic">
                     "Más que ropa, somos una declaración de estilo"
@@ -34,13 +34,13 @@
                     </h2>
                     <div class="space-y-6 text-gray-700 font-montserrat leading-relaxed">
                         <p class="text-lg">
-                            BadGuys comenzó en 2018 como un pequeño proyecto entre amigos apasionados por el streetwear y la cultura urbana. Lo que empezó en un garaje se ha convertido en una marca reconocida por su autenticidad y calidad.
+                            BIGI.NYC comenzó en 2018 como un pequeño proyecto entre amigos apasionados por el streetwear y la cultura urbana. Lo que empezó en un garaje se ha convertido en una marca reconocida por su autenticidad y calidad.
                         </p>
                         <p class="text-lg">
                             Nuestra misión siempre ha sido clara: crear piezas que no solo se vean increíbles, sino que cuenten una historia. Cada diseño refleja la energía de las calles, la creatividad sin límites y la actitud rebelde que nos define.
                         </p>
                         <p class="text-lg">
-                            Hoy, BadGuys es más que una marca de ropa. Somos una comunidad global de individuos que se expresan a través del estilo, que desafían las normas y que abrazan su autenticidad sin disculpas.
+                            Hoy, BIGI.NYC es más que una marca de ropa. Somos una comunidad global de individuos que se expresan a través del estilo, que desafían las normas y que abrazan su autenticidad sin disculpas.
                         </p>
                     </div>
                 </div>
@@ -125,7 +125,7 @@
                     </div>
                     <h3 class="text-2xl font-roboto-flex font-bold text-black mb-4 text-center">COMUNIDAD</h3>
                     <p class="text-gray-600 font-montserrat text-center leading-relaxed">
-                        Valoramos a nuestra comunidad. Cada cliente es parte de la familia BadGuys y su opinión nos importa.
+                        Valoramos a nuestra comunidad. Cada cliente es parte de la familia BIGI.NYC y su opinión nos importa.
                     </p>
                 </div>
 
@@ -160,7 +160,7 @@
         <div class="container mx-auto px-6 relative z-10">
             <div class="text-center max-w-4xl mx-auto">
                 <h2 class="text-4xl lg:text-5xl font-roboto-flex font-bold text-gray-900 mb-8">
-                    ¿LISTO PARA SER PARTE DE <span class="text-black">BADGUYS?</span>
+                    ¿LISTO PARA SER PARTE DE <span class="text-black">BIGI.NYC?</span>
                 </h2>
                 <p class="text-xl text-gray-700 mb-10 font-montserrat leading-relaxed">
                     Únete a nuestra comunidad global de individuos auténticos que expresan su personalidad a través del streetwear premium

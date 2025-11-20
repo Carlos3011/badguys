@@ -3,7 +3,7 @@
         <div class="flex justify-between h-16 relative">
             <div class="flex items-center gap-8">
                 <a href="{{ route('customer.home') }}" class="flex items-center space-x-3">
-                    <h3 class="text-2xl font-roboto-flex font-bold text-white tracking-wider">BADGUYS</h3>
+                    <h3 class="text-2xl font-roboto-flex font-bold text-white tracking-wider">BIGI.NYC</h3>
                 </a>
                 <div class="hidden sm:flex sm:ms-10 space-x-8">
                     <x-customer.layout.nav-link :href="route('customer.home')" :active="request()->routeIs('customer.home')">

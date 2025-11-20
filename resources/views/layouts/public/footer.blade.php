@@ -19,7 +19,7 @@
                 <div class="space-y-6">
                     <div class="flex items-center space-x-4">
                         <h3 class="text-5xl font-roboto-flex font-bold text-white tracking-wider">
-                            BADGUYS
+                            BIGI.NYC
                         </h3>
                         <div class="w-12 h-12 bg-gray-800 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-gray-600">
                             <i class="fas fa-crown text-xl text-white"></i>
@@ -116,7 +116,7 @@
                     <i class="fas fa-copyright text-sm text-white"></i>
                 </div>
                 <p class="text-gray-400 font-montserrat text-lg">
-                    © 2025 <span class="text-white font-semibold">BadGuys</span>. Todos los derechos reservados.
+                    © 2025 <span class="text-white font-semibold">BIGI.NYC</span>. Todos los derechos reservados.
                 </p>
             </div>
             

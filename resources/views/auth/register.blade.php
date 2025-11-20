@@ -4,7 +4,7 @@
         <h2 class="text-3xl font-roboto-flex font-bold text-gray-900 mb-2">
             CREAR <span class="text-black">CUENTA</span>
         </h2>
-        <p class="text-gray-600 font-montserrat text-sm">Únete a la comunidad BadGuys</p>
+        <p class="text-gray-600 font-montserrat text-sm">Únete a la comunidad BIGI.NYC</p>
         <div class="h-0.5 w-16 bg-black mx-auto mt-3 rounded-full"></div>
     </div>
 
@@ -98,7 +98,7 @@
                 <a href="#" class="text-black hover:text-gray-700 font-medium hover:underline">Términos y Condiciones</a> 
                 y la 
                 <a href="#" class="text-black hover:text-gray-700 font-medium hover:underline">Política de Privacidad</a> 
-                de BadGuys
+                de BIGI.NYC
             </label>
         </div>
 

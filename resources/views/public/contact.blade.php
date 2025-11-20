@@ -109,8 +109,8 @@
                                     </div>
                                     <div>
                                         <h4 class="font-semibold text-gray-900 font-montserrat mb-1">Email</h4>
-                                        <p class="text-gray-600 font-montserrat">info@badguys.com</p>
-                                        <p class="text-gray-600 font-montserrat">support@badguys.com</p>
+                                        <p class="text-gray-600 font-montserrat">info@BIGI.NYC.com</p>
+                                        <p class="text-gray-600 font-montserrat">support@BIGI.NYC.com</p>
                                     </div>
                                 </div>
                                 

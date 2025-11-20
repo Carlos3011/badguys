@@ -4,7 +4,7 @@
         <h2 class="text-3xl font-roboto-flex font-bold text-gray-900 mb-2">
             INICIAR <span class="text-black">SESIÓN</span>
         </h2>
-        <p class="text-gray-600 font-montserrat text-sm">Accede a tu cuenta BadGuys</p>
+        <p class="text-gray-600 font-montserrat text-sm">Accede a tu cuenta BIGI.NYC</p>
         <div class="h-0.5 w-16 bg-black mx-auto mt-3 rounded-full"></div>
     </div>
 

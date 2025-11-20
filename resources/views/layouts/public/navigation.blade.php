@@ -21,7 +21,7 @@
                     <a href="{{ route('home') }}" class="flex items-center space-x-3">
                        
                         <h3 class="text-2xl font-roboto-flex font-bold text-white tracking-wider">
-                            BADGUYS
+                            BIGI.NYC
                         </h3>
                     </a>
                 </div>

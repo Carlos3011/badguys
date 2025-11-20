@@ -9,7 +9,7 @@
     <div class="relative z-10 hidden sm:flex flex-col w-64 sm:w-72 p-4">
         <!-- Brand -->
         <a href="{{ route('admin.dashboard') }}" class="flex items-center space-x-3 mb-6">
-            <h3 class="text-2xl font-roboto-flex font-bold text-white tracking-wider">BADGUYS</h3>
+            <h3 class="text-2xl font-roboto-flex font-bold text-white tracking-wider">BIGI.NYC</h3>
         </a>
 
         <!-- Navigation -->
@@ -100,7 +100,7 @@
     <div x-show="open" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-x-full" x-transition:enter-end="opacity-100 translate-x-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-x-0" x-transition:leave-end="opacity-0 -translate-x-full" class="fixed top-0 left-0 bottom-0 w-72 bg-black border-r border-gray-700 z-30 sm:hidden p-4">
         <!-- Mobile content mirrors desktop -->
         <a href="{{ route('admin.dashboard') }}" class="flex items-center space-x-3 mb-6">
-            <h3 class="text-2xl font-roboto-flex font-bold text-white tracking-wider">BADGUYS</h3>
+            <h3 class="text-2xl font-roboto-flex font-bold text-white tracking-wider">BIGI.NYC</h3>
         </a>
         <div class="space-y-2">
             <x-admin.layout.admin-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">{{ __('Panel') }}</x-admin.layout.admin-nav-link>

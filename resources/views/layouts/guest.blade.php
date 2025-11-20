@@ -5,13 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'BadGuys') }}</title>
+        <title>{{ config('app.name', 'BIGI.NYC') }}</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         
-        <!-- BadGuys Custom Fonts -->
+        <!-- BIGI.NYC Custom Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Fruktur:ital@0;1&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
 
         
@@ -70,7 +70,7 @@
             <!-- Footer Text -->
             <div class="mt-8 text-center relative z-10">
                 <p class="text-gray-600 text-sm font-montserrat">
-                    © 2024 BadGuys. Estilo que marca la diferencia.
+                    © 2024 BIGI.NYC. Estilo que marca la diferencia.
                 </p>
             </div>
         </div>

@@ -251,7 +251,7 @@
         <div class="container mx-auto px-6 relative z-10">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">
-                    Acerca de <span class="text-gray-300">BadGuys</span>
+                    Acerca de <span class="text-gray-300">BIGI.NYC</span>
                 </h2>
                 <div class="w-24 h-1 bg-white mx-auto mb-6"></div>
                 <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
@@ -333,7 +333,7 @@
                         </div>
                         
                         <p class="text-lg text-gray-300 leading-relaxed font-montserrat">
-                            En BadGuys creemos que la moda urbana es más que ropa, es una forma de expresar tu <span class="text-white font-semibold">autenticidad</span> y actitud sin compromisos.
+                            En BIGI.NYC creemos que la moda urbana es más que ropa, es una forma de expresar tu <span class="text-white font-semibold">autenticidad</span> y actitud sin compromisos.
                         </p>
                     </div>
                     
