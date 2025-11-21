@@ -28,7 +28,7 @@
     </head>
     <body class="font-montserrat text-gray-900 antialiased">
         <!-- Minimalist Background -->
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-white relative">
+        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-white relative bw-only">
             <!-- Subtle grid pattern -->
             <div class="absolute inset-0 opacity-5">
                 <div class="absolute inset-0" style="background-image: linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px); background-size: 20px 20px;"></div>

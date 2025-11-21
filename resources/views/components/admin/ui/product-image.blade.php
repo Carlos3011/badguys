@@ -4,6 +4,7 @@
     'class' => 'w-full h-32 object-cover rounded-lg border-2 border-gray-200',
     'clickable' => false,
     'showName' => true,
+    'base' => null,
 ])
 
 @php
@@ -11,12 +12,20 @@
     $imageName = 'Sin imagen';
     
     if ($media) {
-        $imageUrl = asset('storage/' . $media->id . '/' . $media->file_name);
+        $subPath = $media->id.'/'.$media->file_name;
+        $imageUrl = method_exists($media, 'getUrl') ? $media->getUrl() : (\Illuminate\Support\Facades\Storage::disk($media->disk ?? 'public')->url($subPath));
+        if ($base) {
+            $imageUrl = url(trim($base, '/').'/'.$subPath);
+        }
         $imageName = $media->file_name;
     } elseif ($product) {
         $firstMedia = $product->getFirstMedia('default');
         if ($firstMedia) {
-            $imageUrl = asset('storage/' . $firstMedia->id . '/' . $firstMedia->file_name);
+            $subPath = $firstMedia->id.'/'.$firstMedia->file_name;
+            $imageUrl = method_exists($firstMedia, 'getUrl') ? $firstMedia->getUrl() : (\Illuminate\Support\Facades\Storage::disk($firstMedia->disk ?? 'public')->url($subPath));
+            if ($base) {
+                $imageUrl = url(trim($base, '/').'/'.$subPath);
+            }
             $imageName = $firstMedia->file_name;
         }
     }

@@ -7,12 +7,12 @@
 
     <div class="py-12 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-6">
+            {{-- <div class="mb-6">
                 <x-customer.ui.search-bar />
             </div>
             <div class="mb-6">
                 <x-customer.ui.filters :categories="$categories" />
-            </div>
+            </div> --}}
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 @forelse($products as $product)
                     <x-customer.product.card :product="$product" :showActions="false" :showQuickView="false" cardSize="default" />

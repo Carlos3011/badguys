@@ -6,16 +6,13 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Customer\ProductController as CustomerProductController;
+use App\Http\Controllers\Public\ProductController as PublicProductController;
 
 
 // Grupo de rutas públicas sin middleware
 Route::group([], function () {
-    Route::get('/', function () {
-        return view('public.home');
-    })->name('home');
-    Route::get('/productos', function () {
-        return view('public.products');
-    })->name('productos');
+    Route::get('/', [PublicProductController::class, 'home'])->name('home');
+    Route::get('/productos', [PublicProductController::class, 'index'])->name('productos');
     Route::get('/categorias', function () {
         return view('public.categorys');
     })->name('categorias');
