@@ -1,11 +1,6 @@
 <x-guest-layout>
-    <!-- Page Title -->
-    <div class="text-center mb-8">
-        <h2 class="text-3xl font-roboto-flex font-bold text-gray-900 mb-2">
-            RESTABLECER <span class="text-black">CONTRASEÑA</span>
-        </h2>
-        <p class="text-gray-600 font-montserrat text-sm">Crea una nueva contraseña segura</p>
-        <div class="h-0.5 w-16 bg-black mx-auto mt-3 rounded-full"></div>
+    <div class="text-center mb-6">
+        <h2 class="text-xl font-semibold text-black">{{ __('Restablecer contraseña') }}</h2>
     </div>
 
     <form method="POST" action="{{ route('password.store') }}" class="space-y-6">
@@ -22,7 +17,7 @@
                     <i class="fas fa-envelope text-gray-400"></i>
                 </div>
                 <x-text-input id="email" 
-                    class="block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-black focus:border-black transition-all duration-200 font-montserrat bg-gray-50 focus:bg-white" 
+                    class="block w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black focus:border-black" 
                     type="email" 
                     name="email" 
                     :value="old('email', $request->email)" 
@@ -42,7 +37,7 @@
                     <i class="fas fa-lock text-gray-400"></i>
                 </div>
                 <x-text-input id="password" 
-                    class="block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-black focus:border-black transition-all duration-200 font-montserrat bg-gray-50 focus:bg-white"
+                    class="block w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black focus:border-black"
                     type="password"
                     name="password"
                     required 
@@ -60,7 +55,7 @@
                     <i class="fas fa-lock text-gray-400"></i>
                 </div>
                 <x-text-input id="password_confirmation" 
-                    class="block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-black focus:border-black transition-all duration-200 font-montserrat bg-gray-50 focus:bg-white"
+                    class="block w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black focus:border-black"
                     type="password"
                     name="password_confirmation" 
                     required 
@@ -70,23 +65,13 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
-        <!-- Reset Password Button -->
-        <div class="space-y-4">
-            <button type="submit" 
-                class="w-full bg-black hover:bg-gray-800 text-white font-montserrat font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2">
-                <i class="fas fa-key mr-2"></i>
-                {{ __('RESTABLECER CONTRASEÑA') }}
-            </button>
-        </div>
+        <button type="submit" class="w-full bg-black text-white py-2.5 rounded-lg hover:bg-black/90 transition-colors">
+            {{ __('Restablecer contraseña') }}
+        </button>
 
-        <!-- Back to Login -->
-        <div class="text-center pt-4 border-t border-gray-200">
-            <p class="text-gray-600 font-montserrat text-sm mb-3">¿Recordaste tu contraseña?</p>
-            <a href="{{ route('login') }}" 
-               class="inline-flex items-center justify-center w-full border-2 border-black text-black hover:bg-black hover:text-white font-montserrat font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2">
-                <i class="fas fa-arrow-left mr-2"></i>
-                {{ __('VOLVER AL LOGIN') }}
-            </a>
+        <div class="text-center">
+            <p class="text-sm text-gray-600">{{ __('¿Recordaste tu contraseña?') }}</p>
+            <a href="{{ route('login') }}" class="text-sm text-black hover:underline">{{ __('Volver al login') }}</a>
         </div>
     </form>
 </x-guest-layout>

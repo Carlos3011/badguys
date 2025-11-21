@@ -27,51 +27,22 @@
        
     </head>
     <body class="font-montserrat text-gray-900 antialiased">
-        <!-- Minimalist Background -->
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-white relative bw-only">
-            <!-- Subtle grid pattern -->
-            <div class="absolute inset-0 opacity-5">
-                <div class="absolute inset-0" style="background-image: linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px); background-size: 20px 20px;"></div>
-            </div>
-
-            <!-- Logo Section -->
-            <div class="relative z-10 mb-8">
-                <a href="/" class="block group">
-                    <div class="relative">
-                        <!-- Logo with minimalist styling -->
-                        <div class="bg-black p-4 rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105 flex items-center justify-center">
-                            <x-application-logo class="w-16 h-16 filter brightness-0 invert" />
-                        </div>
-                        
-                        <!-- Brand Name -->
-                        <div class="text-center mt-4">
-                            <h1 class="text-3xl font-roboto-flex font-bold text-black tracking-wider">
-                                BAD<span class="text-gray-600">GUYS</span>
-                            </h1>
-                            <div class="h-1 w-20 bg-black mx-auto mt-2 rounded-full"></div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Auth Form Container -->
-            <div class="w-full sm:max-w-md relative z-10">
-                <div class="bg-white shadow-xl overflow-hidden rounded-2xl border border-gray-200 relative">
-                    <!-- Simple top border -->
-                    <div class="h-1 bg-black"></div>
-                    
-                    <!-- Form Content -->
-                    <div class="px-8 py-8">
-                        {{ $slot }}
-                    </div>
+        <div class="min-h-screen flex items-center justify-center bg-white">
+            <div class="w-full sm:max-w-sm px-6">
+                <div class="mb-6 text-center">
+                    <a href="/" class="inline-flex items-center gap-3">
+                        <x-application-logo class="w-10 h-10" />
+                        <span class="text-xl font-semibold text-black">BIGI.NYC</span>
+                    </a>
                 </div>
-            </div>
-            
-            <!-- Footer Text -->
-            <div class="mt-8 text-center relative z-10">
-                <p class="text-gray-600 text-sm font-montserrat">
-                    © 2024 BIGI.NYC. Estilo que marca la diferencia.
-                </p>
+
+                <div class="bg-white border border-gray-200 rounded-xl p-6">
+                    {{ $slot }}
+                </div>
+
+                <div class="mt-6 text-center">
+                    <p class="text-gray-400 text-xs">© 2024 BIGI.NYC</p>
+                </div>
             </div>
         </div>
     </body>
