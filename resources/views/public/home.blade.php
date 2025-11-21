@@ -24,9 +24,14 @@
             <div class="mb-6">
                 <x-customer.ui.filters :categories="$categories" />
             </div> --}}
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-2 gap-6">
                 @forelse($products as $product)
-                    <x-customer.product.card :product="$product" :showActions="false" :showQuickView="false" cardSize="default" base="/system/storage/app/public/" />
+                    <div>
+                        <x-customer.product.card :product="$product" :showActions="false" :showQuickView="false" cardSize="small" base="/system/storage/app/public/" />
+                        <a href="{{ route('customer.products.show', $product) }}" class="mt-2 block text-sm font-medium text-gray-900">
+                            {{ $product->name }}
+                        </a>
+                    </div>
                 @empty
                     <div class="col-span-full text-center text-black">{{ __('No hay productos disponibles.') }}</div>
                 @endforelse

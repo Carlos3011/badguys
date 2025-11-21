@@ -9,7 +9,7 @@
     - cardSize (optional, default: 'default'): Tamaño de la card ('small', 'default', 'large')
 --}}
 
-@props(['product', 'showActions' => false, 'showQuickView' => false, 'cardSize' => 'default'])
+@props(['product', 'showActions' => false, 'showQuickView' => false, 'cardSize' => 'default', 'showOnlyName' => false])
 
 @php
     // Configuración de tamaños
@@ -152,9 +152,9 @@
     </div>
 
     {{-- Contenido de la Card --}}
-    <div class="{{ $size['padding'] }} hidden">
+    <div class="{{ $size['padding'] }} {{ $showOnlyName ? '' : 'hidden' }}">
 
-        {{-- Categoría y Marca --}}
+        @if (!$showOnlyName)
         <div class="flex items-center gap-2 text-xs mb-2 flex-wrap">
             @if ($category)
                 <span class="inline-flex items-center bg-blue-50 text-blue-700 px-2 py-1 rounded-md font-medium">
@@ -177,6 +177,7 @@
                 </span>
             @endif
         </div>
+        @endif
 
         {{-- Nombre del Producto --}}
         <a href="{{ route('customer.products.show', $product) }}">
@@ -186,22 +187,23 @@
             </h3>
         </a>
 
-        {{-- Excerpt (Descripción Corta) --}}
-        @if ($product->excerpt)
+        @if (!$showOnlyName && $product->excerpt)
             <p class="text-sm text-gray-600 mb-3 line-clamp-2 leading-relaxed">
                 {{ $product->excerpt }}
             </p>
         @endif
 
-        {{-- SKU --}}
+        @if (!$showOnlyName)
         <div class="text-xs text-gray-400 mb-3 font-mono">
             SKU: {{ $product->sku }}
         </div>
+        @endif
 
-        {{-- Separador --}}
+        @if (!$showOnlyName)
         <div class="border-t border-gray-100 my-3"></div>
+        @endif
 
-        {{-- Precio y Stock --}}
+        @if (!$showOnlyName)
         <div class="flex items-end justify-between mb-3">
             <div>
                 <div class="flex items-baseline gap-1">
@@ -211,7 +213,6 @@
                     <span class="text-sm text-gray-500 font-medium">USD</span>
                 </div>
 
-                {{-- Indicador de Stock --}}
                 <div class="flex items-center gap-1 mt-1">
                     @if ($isInStock)
                         <div class="w-2 h-2 rounded-full {{ $isLowStock ? 'bg-orange-500' : 'bg-green-500' }}"></div>
@@ -225,11 +226,11 @@
                 </div>
             </div>
         </div>
+        @endif
 
-        {{-- Botones de Acción --}}
-        @if ($showActions)
+        @if (!$showOnlyName && $showActions)
             <div class="flex gap-2 mt-4">
-                <button type="button" class="flex-1 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-semibold py-2.5 px-4 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 group" {{ !$isInStock ? 'disabled' : '' }} title="{{ $isInStock ? 'Agregar al carrito' : 'Producto agotado' }}">
+                <button type="button" class="flex-1 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-semibold py-2.5 px-4 rounded-lg transition-all duración-200 flex items-center justify-center gap-2 group" {{ !$isInStock ? 'disabled' : '' }} title="{{ $isInStock ? 'Agregar al carrito' : 'Producto agotado' }}">
                     <i class="fas fa-shopping-cart group-hover:scale-110 transition-transform"></i>
                     <span class="text-sm">{{ $isInStock ? 'Agregar' : 'Agotado' }}</span>
                 </button>
