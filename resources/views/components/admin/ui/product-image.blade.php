@@ -15,7 +15,7 @@
         $subPath = $media->id.'/'.$media->file_name;
         $imageUrl = method_exists($media, 'getUrl') ? $media->getUrl() : (\Illuminate\Support\Facades\Storage::disk($media->disk ?? 'public')->url($subPath));
         if ($base) {
-            $imageUrl = url(trim($base, '/').'/'.$subPath);
+            $imageUrl = rtrim($base, '/').'/'.$subPath;
         }
         $imageName = $media->file_name;
     } elseif ($product) {
@@ -24,7 +24,7 @@
             $subPath = $firstMedia->id.'/'.$firstMedia->file_name;
             $imageUrl = method_exists($firstMedia, 'getUrl') ? $firstMedia->getUrl() : (\Illuminate\Support\Facades\Storage::disk($firstMedia->disk ?? 'public')->url($subPath));
             if ($base) {
-                $imageUrl = url(trim($base, '/').'/'.$subPath);
+                $imageUrl = rtrim($base, '/').'/'.$subPath;
             }
             $imageName = $firstMedia->file_name;
         }

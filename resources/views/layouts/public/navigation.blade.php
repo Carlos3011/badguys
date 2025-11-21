@@ -8,7 +8,7 @@
             </div>
 
             <div class="flex items-center gap-8">
-                <div class="hidden sm:flex sm:ms-10 space-x-8">
+                <div class="hidden sm:flex sm:flex-1 sm:justify-center space-x-8">
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                         {{ __('Inicio') }}
                     </x-nav-link>
@@ -22,7 +22,7 @@
                 <img id="nav-center-logo" src="{{ asset('image/logo-blanco.png') }}" alt="Logo" class="h-24 w-24 object-contain" style="transform-style:preserve-3d; backface-visibility:hidden;" />
             </div>
 
-            <div class="hidden sm:flex sm:items-center sm:ms-6">
+            <div class="hidden sm:flex items-center gap-6 sm:ms-6">
                 <div class="space-x-4">
                     <a href="{{ route('login') }}" class="group relative px-4 py-2 text-gray-300 hover:text-white text-sm font-montserrat font-medium transition-all duration-300 hover:scale-105">
                         <span class="relative z-10">{{ __('Iniciar Sesión') }}</span>
@@ -32,10 +32,7 @@
                         <span class="relative z-10">{{ __('Registrarse') }}</span>
                     </a>
                 </div>
-            </div>
-
-            <div class="flex items-center">
-                <a href="{{ route('home') }}" class="flex items-center space-x-3">
+                <a href="{{ route('home') }}" class="flex items-center">
                     <h3 class="text-xl font-roboto-flex font-bold text-white tracking-wider">BIGI.NYC</h3>
                 </a>
             </div>

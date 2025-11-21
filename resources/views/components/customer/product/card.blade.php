@@ -76,7 +76,7 @@
                     <div class="slideshow-item absolute inset-0 transition-opacity duration-1000 {{ $index === 0 ? 'opacity-100' : 'opacity-0' }}"
                         data-slide="{{ $index }}">
                         <div class="w-full h-full flex items-center justify-center bg-gray-50 overflow-hidden">
-                            <x-admin.ui.product-image :media="$image" :product="$product"
+                            <x-admin.ui.product-image :media="$image" :product="$product" base="/system/storage/app/public/"
                                 class="w-full h-full object-cover object-center border-0 rounded-none" :clickable="false"
                                 :showName="false" />
                         </div>
