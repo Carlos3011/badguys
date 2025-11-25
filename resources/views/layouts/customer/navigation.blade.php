@@ -19,7 +19,9 @@
                 <img id="nav-center-logo" src="{{ asset('image/logo-blanco.png') }}" alt="Logo" class="h-24 w-24 object-contain" />
             </div>
 
-            <div class="hidden sm:flex sm:items-center sm:ms-6">
+            <div class="hidden sm:flex items-center gap-6 sm:ms-6">
+                <x-customer.ui.wishlist />
+                <x-customer.ui.cart />
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 text-sm font-medium rounded-md text-white bg-black border border-white/20 hover:bg-white hover:text-black transition">
@@ -42,12 +44,12 @@
                         </form>
                     </x-slot>
                 </x-dropdown>
-                <x-customer.ui.wishlist class="ml-3" />
-                <x-customer.ui.cart class="ml-2" />
             </div>
 
-            <div class="-me-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-white hover:text-black transition">
+            <div class="flex items-center sm:hidden gap-2">
+                <x-customer.ui.wishlist />
+                <x-customer.ui.cart />
+                <button @click="open = ! open" class="-me-2 inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-white hover:text-black transition">
                     <i :class="open ? 'fas fa-times' : 'fas fa-bars'" class="h-6 w-6"></i>
                 </button>
             </div>
@@ -81,10 +83,19 @@
         if (!el) return;
         var angle = 0;
         function tick() {
-            angle = (angle + 0.3) % 360;
-            el.style.transform = 'rotate(' + angle + 'deg)';
+            angle = (angle + 1.5) % 360;
+            var rad = angle * Math.PI / 180;
+            var face = Math.cos(rad);
+            var wobble = Math.sin(rad * 2) * 7;
+            var precession = Math.sin(rad * 0.5) * 2;
+            var thickness = 0.9 + 0.1 * Math.abs(face);
+            var light = 0.9 + 0.1 * Math.abs(face);
+            el.style.transform = 'perspective(800px) rotateY(' + angle + 'deg) rotateX(' + wobble + 'deg) rotateZ(' + precession + 'deg) scaleX(' + thickness + ')';
+            el.style.filter = 'brightness(' + light + ')';
             requestAnimationFrame(tick);
         }
+        el.style.willChange = 'transform, filter';
+        el.style.transformOrigin = '50% 50%';
         requestAnimationFrame(tick);
     })();
 </script>

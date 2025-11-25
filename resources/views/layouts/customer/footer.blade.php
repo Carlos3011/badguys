@@ -1,14 +1,21 @@
-<footer class="bg-black border-t border-white/10">
-    <div class="max-w-7xl mx-auto px-6 py-8">
-        <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-            <div class="text-white font-roboto-flex font-bold tracking-wider">BIGI.NYC</div>
-            <nav class="flex items-center gap-6 text-sm">
-                <a href="{{ route('customer.home') }}" class="text-white/80 hover:text-white transition">Inicio</a>
-                <a href="{{ route('customer.products.index') }}" class="text-white/80 hover:text-white transition">Productos</a>
-                <a href="{{ route('categorias') }}" class="text-white/80 hover:text-white transition">Categorías</a>
-                <a href="{{ route('contacto') }}" class="text-white/80 hover:text-white transition">Contacto</a>
-            </nav>
-            <div class="text-white/60 text-sm">© {{ date('Y') }} BIGI.NYC</div>
+<footer class="bg-black text-white">
+    <div class="max-w-7xl mx-auto px-4 py-12">
+        <div class="flex items-center justify-between">
+            <h3 class="text-2xl font-roboto-flex font-bold tracking-wider">BIGI.NYC</h3>
+            <div class="flex items-center gap-4">
+                <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook"></i></a>
+            </div>
+        </div>
+        <div class="mt-6 h-px bg-white/10"></div>
+        <div class="mt-6 flex flex-col md:flex-row items-center justify-between text-sm text-gray-400">
+            <p>© 2025 <span class="text-white font-semibold">BIGI.NYC</span>. Todos los derechos reservados.</p>
+            <div class="flex gap-6 mt-4 md:mt-0">
+                <a href="#" class="hover:text-white">Privacidad</a>
+                <a href="#" class="hover:text-white">Términos</a>
+                <a href="#" class="hover:text-white">Cookies</a>
+            </div>
         </div>
     </div>
 </footer>
