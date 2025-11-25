@@ -50,6 +50,7 @@
     
     // Generar ID único para este componente
     $componentId = 'product-detail-' . Str::random(8);
+    $descModalId = 'detail-desc-modal-' . $product->id;
 @endphp
 
 <div {{ $attributes->merge(['class' => 'bg-white rounded-xl shadow-lg overflow-hidden']) }}>
@@ -218,15 +219,16 @@
                     <i class="fas fa-info-circle mr-1"></i>
                     Precio incluye impuestos
                 </p>
+                <div class="flex items-center gap-2 mt-2">
+                    <i class="fas fa-users text-black text-sm"></i>
+                    <span class="text-sm text-black font-medium"><span id="views-detail-{{ $product->id }}">0</span> personas viendo</span>
+                </div>
             </div>
 
-            {{-- Descripción Corta (Excerpt) --}}
-            @if($product->excerpt)
-                <div class="bg-white border-l-4 border-black p-4 rounded-r-lg">
-                    <p class="text-gray-800 text-lg leading-relaxed">
-                        {{ $product->excerpt }}
-                    </p>
-                </div>
+            @if($product->description || $product->excerpt)
+                <button type="button" class="text-xs text-black underline desc-trigger" data-target="{{ $descModalId }}">
+                    {{ __('Ver descripción') }}
+                </button>
             @endif
 
             @if($product->height || $product->width || $product->length || $product->weight)
@@ -246,24 +248,7 @@
                 </div>
             @endif
 
-            <div class="py-3 border-t border-gray-200">
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center gap-2 text-sm">
-                        <span class="font-semibold">Disponibilidad</span>
-                        @if($isInStock)
-                            <span class="inline-flex items-center text-black"><i class="fas fa-check mr-1"></i>En stock</span>
-                        @else
-                            <span class="inline-flex items-center text-black"><i class="fas fa-ban mr-1"></i>Agotado</span>
-                        @endif
-                    </div>
-                    <div class="text-sm text-gray-700">
-                        Unidades: <span class="font-semibold">{{ number_format($stock, 0) }}</span>
-                    </div>
-                </div>
-                @if($isLowStock)
-                    <div class="mt-2 text-xs text-black"><i class="fas fa-exclamation-triangle mr-1"></i>Stock bajo</div>
-                @endif
-            </div>
+            
 
             {{-- Selector de Cantidad --}}
             @if($isInStock)
@@ -331,18 +316,7 @@
 
             
 
-            {{-- Descripción Completa --}}
-            @if($product->description)
-                <div class="border-t border-gray-200 pt-6 space-y-3">
-                    <h3 class="text-xl font-bold text-gray-900 flex items-center gap-2">
-                        <i class="fas fa-file-lines"></i>
-                        Descripción del Producto
-                    </h3>
-                    <div class="prose prose-sm max-w-none text-gray-700 bg-gray-50 p-5 rounded-lg leading-relaxed">
-                        {!! nl2br(e($product->description)) !!}
-                    </div>
-                </div>
-            @endif
+            
 
             {{-- Información Adicional --}}
             {{-- <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-6 border-t border-gray-200">
@@ -376,9 +350,23 @@
                     </div>
                 </div>
             </div> --}}
+</div>
+</div>
+</div>
+
+{{-- Modal de Descripción Minimalista --}}
+@if($product->description || $product->excerpt)
+    <div id="{{ $descModalId }}" class="hidden fixed inset-0 flex items-center justify-center bg-black/60 z-50 opacity-0 pointer-events-none transition-opacity duration-200">
+        <div class="desc-content bg-white text-black rounded-lg p-4 max-w-md w-11/12 transform transition-transform duration-200 scale-95">
+            <div class="text-sm leading-relaxed">
+                {!! nl2br(e($product->description ?? $product->excerpt)) !!}
+            </div>
+            <button type="button" class="desc-close mt-4 w-full bg-black text-white py-2 rounded-lg">
+                {{ __('Cerrar') }}
+            </button>
         </div>
     </div>
-</div>
+@endif
 
 {{-- Modal de Visor de Imágenes --}}
 @if($images->count() > 0)
@@ -531,4 +519,73 @@
         }
     });
 })();
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var el = document.getElementById('views-detail-{{ $product->id }}');
+    if (!el) return;
+    function update() {
+        var n = Math.floor(Math.random() * (100 - 30 + 1)) + 30;
+        el.textContent = n;
+    }
+    update();
+    setInterval(update, 5000);
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('{{ $descModalId }}');
+    if (!modal) return;
+    const content = modal.querySelector('.desc-content');
+    const openers = document.querySelectorAll('[data-target="{{ $descModalId }}"]');
+    const closeBtn = modal.querySelector('.desc-close');
+
+    function openModal() {
+        modal.classList.remove('hidden', 'pointer-events-none');
+        requestAnimationFrame(() => {
+            modal.classList.remove('opacity-0');
+            modal.classList.add('opacity-100');
+            if (content) {
+                content.classList.remove('scale-95');
+                content.classList.add('scale-100');
+            }
+        });
+    }
+
+    function closeModal() {
+        modal.classList.remove('opacity-100');
+        modal.classList.add('opacity-0');
+        if (content) {
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+        }
+        setTimeout(() => {
+            modal.classList.add('pointer-events-none');
+            modal.classList.add('hidden');
+        }, 200);
+    }
+
+    openers.forEach(btn => {
+        btn.addEventListener('click', function(ev) {
+            ev.preventDefault();
+            openModal();
+        });
+    });
+
+    modal.addEventListener('click', function(ev) {
+        if (ev.target === modal) {
+            ev.preventDefault();
+            closeModal();
+        }
+    });
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function(ev) {
+            ev.preventDefault();
+            closeModal();
+        });
+    }
+});
 </script>
